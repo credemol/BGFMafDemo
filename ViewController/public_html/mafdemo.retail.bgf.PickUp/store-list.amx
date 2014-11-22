@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle" id="lb1"/>
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="#{viewcontrollerBundle.pickup_store_header}" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton shortDesc="map" id="cb1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" action="viewHistory" text="#{viewcontrollerBundle.pickup_common_pickupHistory}"/>
+    </amx:facet>
+    <amx:panelFormLayout id="pfl1">
+      <amx:selectOneChoice value="#{pageFlowScope.selectedProvinceCode}"
+                           label="#{viewcontrollerBundle.pickup_store_province}" id="soc1"
+                           valueChangeListener="#{pageFlowScope.PickUpStoreBean.selectProvince}">
+        <amx:selectItem id="si5" label="#{viewcontrollerBundle.pickup_store_chooseProvince}" value="" />                           
+        <amx:selectItems value="#{bindings.provinces.items}" id="si1"/>
+      </amx:selectOneChoice>
+      <amx:selectOneChoice value="#{pageFlowScope.selectedDistrictCode}"
+                           label="#{viewcontrollerBundle.pickup_store_district}" id="soc2"
+                           valueChangeListener="#{pageFlowScope.PickUpStoreBean.selectDistrict}">
+        <amx:selectItem value="" label="#{viewcontrollerBundle.pickup_store_chooseDistrict}" id="si4"/>
+        <amx:selectItems value="#{bindings.districts.items}" id="si2"/>
+      </amx:selectOneChoice>
+      <amx:inputText id="it1" value="#{pageFlowScope.selectedStoreName}"
+                     label="#{viewcontrollerBundle.pickup_store_storeName}"
+                     valueChangeListener="#{pageFlowScope.PickUpStoreBean.storeNameChanged}"/>
+    </amx:panelFormLayout>
+    <amx:panelGroupLayout id="pgl17" halign="center"
+                          inlineStyle="border-style:none none solid; margin-bottom:5px; border-bottom-width:thin; border-bottom-style:solid; border-bottom-color:GrayText;">
+      <amx:tableLayout id="tl1">
+        <amx:rowLayout id="rl1">
+          <amx:cellFormat id="cf1">
+            <amx:panelGroupLayout id="pgl9" inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+              <amx:commandLink id="cl1" actionListener="#{pageFlowScope.PickUpStoreBean.toggleService01}">
+                <amx:image id="i9" source="/images/small_01_hour.png"
+                           inlineStyle="#{pageFlowScope.service01 ? 'margin-top:-28px' : ''}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf6">
+            <amx:panelGroupLayout id="pgl10" inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+              <amx:commandLink id="cl2" actionListener="#{pageFlowScope.PickUpStoreBean.toggleService02}">
+                <amx:image id="i10" source="/images/small_02_delivery.png"
+                           inlineStyle="#{pageFlowScope.service02 ? 'margin-top:-28px' : ''}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf8">
+            <amx:panelGroupLayout id="pgl11" inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+              <amx:commandLink text="" id="cl3" actionListener="#{pageFlowScope.PickUpStoreBean.toggleService03}">
+                <amx:image id="i11" source="/images/small_03_bakery.png"
+                           inlineStyle="#{pageFlowScope.service03 ? 'margin-top:-28px' : ''}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf15">
+            <amx:panelGroupLayout id="pgl12" inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+              <amx:commandLink text="" id="cl4" actionListener="#{pageFlowScope.PickUpStoreBean.toggleService04}">
+                <amx:image id="i12" source="/images/small_04_fried.png"
+                           inlineStyle="#{pageFlowScope.service04 ? 'margin-top:-28px' : ''}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf16">
+            <amx:panelGroupLayout id="pgl13" inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+              <amx:commandLink text="" id="cl5" actionListener="#{pageFlowScope.PickUpStoreBean.toggleService05}">
+                <amx:image id="i13" source="/images/small_05_coffee.png"
+                           inlineStyle="#{pageFlowScope.service05 ? 'margin-top:-28px' : ''}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf17">
+            <amx:panelGroupLayout id="pgl14" inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+              <amx:commandLink text="" id="cl6" actionListener="#{pageFlowScope.PickUpStoreBean.toggleService06}">
+                <amx:image id="i14" source="/images/small_06_lotto.png"
+                           inlineStyle="#{pageFlowScope.service06 ? 'margin-top:-28px' : ''}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf18">
+            <amx:panelGroupLayout id="pgl15" inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+              <amx:commandLink text="" id="cl7" actionListener="#{pageFlowScope.PickUpStoreBean.toggleService07}">
+                <amx:image id="i15" source="/images/small_07_toto.png"
+                           inlineStyle="#{pageFlowScope.service07 ? 'margin-top:-28px' : ''}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf19">
+            <amx:panelGroupLayout id="pgl16" inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+              <amx:commandLink text="" id="cl8" actionListener="#{pageFlowScope.PickUpStoreBean.toggleService08}">
+                <amx:image id="i16" source="/images/small_08_cash.png"
+                           inlineStyle="#{pageFlowScope.service08 ? 'margin-top:-28px' : ''}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+    </amx:panelGroupLayout>
+    <amx:listView var="row" value="#{bindings.stores.collectionModel}" fetchSize="#{bindings.stores.rangeSize}"
+                  selectedRowKeys="#{bindings.stores.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.stores.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem showLinkIcon="false" id="li1" shortDesc="store list" action="chooseProducts"
+                    actionListener="#{pageFlowScope.PickUpStoreBean.selectStore}">
+        <amx:tableLayout width="100%" id="tl2" shortDesc="store information">
+          <amx:rowLayout id="rl6">
+            <amx:cellFormat width="95px" id="cf4" shortDesc="store name and tel no"
+                            inlineStyle="padding-left:10px;">
+                <amx:outputText value="#{row.name} (#{row.telNo})" id="ot3" inlineStyle="font:smaller;"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl3">
+            
+            <amx:cellFormat id="cf2" 
+                            shortDesc="service icons" inlineStyle="overflow:hidden;height:27px;">
+              <amx:commandLink text="" id="cl9" action="viewLocation"
+                               actionListener="#{pageFlowScope.StoreLocationBean.selectStore}">
+                <amx:setPropertyListener id="spl2" from="#{row.id}" to="#{pageFlowScope.locationStoreId}"
+                                         type="action"/>
+                    <amx:outputText value="#{row.newAddress}" styleClass="adfmf-listItem-captionText" id="ot2"
+                                    inlineStyle="font-size:small; padding-left:10px;"/>
+              </amx:commandLink>  
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl2">
+            <amx:cellFormat id="cf3" shortDesc="address"
+                            halign="center">
+              <amx:tableLayout id="tl3" inlineStyle="margin:2px 2px 2px 2px;">
+                <amx:rowLayout id="rl5">
+                  <amx:cellFormat id="cf5" inlineStyle="">
+                    <amx:panelGroupLayout id="pgl1"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i1" source="/images/small_01_hour.png"
+                                 inlineStyle="#{row.service01 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="24 hours"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf7" inlineStyle="">
+                    <amx:panelGroupLayout id="pgl2"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i2" source="/images/small_02_delivery.png"
+                                 inlineStyle="#{row.service02 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="delivery"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf9">
+                    <amx:panelGroupLayout id="pgl3"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i3" source="/images/small_03_bakery.png"
+                                 inlineStyle="#{row.service03 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="bakery"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf10">
+                    <amx:panelGroupLayout id="pgl4"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i4" source="/images/small_04_fried.png"
+                                 inlineStyle="#{row.service04 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="fried"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf11">
+                    <amx:panelGroupLayout id="pgl5"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i5" source="/images/small_05_coffee.png"
+                                 inlineStyle="#{row.service05 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="coffee"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf12">
+                    <amx:panelGroupLayout id="pgl6"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i6" source="/images/small_06_lotto.png"
+                                 inlineStyle="#{row.service06 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="lotto"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf13">
+                    <amx:panelGroupLayout id="pgl7"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i7" source="/images/small_07_toto.png"
+                                 inlineStyle="#{row.service07 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="toto"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf14">
+                    <amx:panelGroupLayout id="pgl8"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i8" inlineStyle="#{row.service08 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 source="/images/small_08_cash.png" shortDesc="cash"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+                           
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:setPropertyListener id="spl1" from="#{row.id}" to="#{pageFlowScope.selectedStoreId}"/>
+        <amx:actionListener id="al1" binding="#{bindings.setCurrentRowWithKey.execute}" type="action"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+  
+  
+</amx:view>

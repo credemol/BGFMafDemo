@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle" id="lb1"/>
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText id="ot1" value="#{viewcontrollerBundle.pickup_cart_header}"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back" text="#{viewcontrollerBundle.pickup_common_productPage}"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+    <!--
+      <amx:commandButton id="cb2" action="viewHistory" text="#{viewcontrollerBundle.pickup_cart_history}"/>
+      -->
+    </amx:facet>
+        <amx:tableLayout width="100%" id="tl2" shortDesc="store information"
+                         inlineStyle="border-bottom-color:InactiveCaption; border-bottom-style:solid; border-bottom-width:thin;">
+          <amx:rowLayout id="rl6">
+            <amx:cellFormat width="95px" id="cf4" shortDesc="store name and tel no"
+                            inlineStyle="padding-left:10px;">
+              <amx:outputText value="#{pageFlowScope.ShoppingCartBean.selectedStore.name} (#{pageFlowScope.ShoppingCartBean.selectedStore.telNo})" id="ot3" inlineStyle="font:smaller;"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl3">
+            
+            <amx:cellFormat id="cf2" 
+                            shortDesc="service icons" inlineStyle="overflow:hidden;height:27px;">
+              <amx:outputText value="#{pageFlowScope.ShoppingCartBean.selectedStore.newAddress}" styleClass="adfmf-listItem-captionText" id="ot2"
+              inlineStyle="font-size:small; padding-left:10px;"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <!--
+          <amx:rowLayout id="rl2">
+            <amx:cellFormat id="cf3" shortDesc="address"
+                            width="100%">
+              <amx:tableLayout id="tl3" inlineStyle="margin:2px 2px 2px 2px;" halign="center">
+                <amx:rowLayout id="rl5">
+                  <amx:cellFormat id="cf5" inlineStyle="">
+                    <amx:panelGroupLayout id="pgl1"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i1" source="/images/small_01_hour.png"
+                                 inlineStyle="#{pageFlowScope.ShoppingCartBean.selectedStore.service01 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="24 hours"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf7" inlineStyle="">
+                    <amx:panelGroupLayout id="pgl2"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i2" source="/images/small_02_delivery.png"
+                                 inlineStyle="#{pageFlowScope.ShoppingCartBean.selectedStore.service02 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="delivery"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf9">
+                    <amx:panelGroupLayout id="pgl3"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i3" source="/images/small_03_bakery.png"
+                                 inlineStyle="#{pageFlowScope.ShoppingCartBean.selectedStore.service03 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="bakery"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf10">
+                    <amx:panelGroupLayout id="pgl4"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i4" source="/images/small_04_fried.png"
+                                 inlineStyle="#{pageFlowScope.ShoppingCartBean.selectedStore.service04 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="fried"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf11">
+                    <amx:panelGroupLayout id="pgl5"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i5" source="/images/small_05_coffee.png"
+                                 inlineStyle="#{pageFlowScope.ShoppingCartBean.selectedStore.service05 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="coffee"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf12">
+                    <amx:panelGroupLayout id="pgl6"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i6" source="/images/small_06_lotto.png"
+                                 inlineStyle="#{pageFlowScope.ShoppingCartBean.selectedStore.service06 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="lotto"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf13">
+                    <amx:panelGroupLayout id="pgl7"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i7" source="/images/small_07_toto.png"
+                                 inlineStyle="#{pageFlowScope.ShoppingCartBean.selectedStore.service07 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 shortDesc="toto"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                  <amx:cellFormat id="cf14">
+                    <amx:panelGroupLayout id="pgl8"
+                                          inlineStyle="display:block; overflow:hidden; width:27px;height:27px;">
+                      <amx:image id="i8" inlineStyle="#{pageFlowScope.ShoppingCartBean.selectedStore.service08 ? 'margin-top:-28px;' : 'margin-top:0px;'}"
+                                 source="/images/small_08_cash.png" shortDesc="cash"/>
+                    </amx:panelGroupLayout>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+                           
+            </amx:cellFormat>
+          </amx:rowLayout>
+          -->
+        </amx:tableLayout>
+    <amx:panelGroupLayout id="pgl10"
+                          inlineStyle="width:100%;border-bottom-style:solid; border-bottom-width:thin; border-bottom-color:InactiveCaption;">
+      <amx:spacer id="s1" height="10" inlineStyle="width:100px;"/>
+      <!--
+      <amx:outputHtml id="oh1" value="#{viewcontrollerBundle.pickup_cart_items}"/>
+      -->
+    </amx:panelGroupLayout>
+    <amx:listView var="row" value="#{bindings.selectedProducts.collectionModel}"
+                  fetchSize="#{bindings.selectedProducts.rangeSize}"
+                  selectedRowKeys="#{bindings.selectedProducts.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.selectedProducts.collectionModel.makeCurrent}"
+                  showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1">
+        <amx:actionListener id="al3"/>
+        <amx:tableLayout id="tl1" width="100%">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat id="cf1" width="40px" halign="center">
+                <amx:image source="#{row.image}" id="i9" inlineStyle="height:38px; width:38px;"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf6" width="100%" height="43px">
+              <amx:outputText value="#{row.name}  - #{row.quantity} #{viewcontrollerBundle.pickup_common_countUnit}" id="ot4"/>
+              <amx:outputText value="#{row.price} #{viewcontrollerBundle.pickup_common_currencyWon}" id="ot5"
+                              inlineStyle="font-size:small;">
+                              <!--
+                <amx:convertNumber id="cn2" type="currency" currencyCode="KRW"
+                                   currencySymbol="#{viewcontrollerBundle.pickup_common_currencyWon}"
+                                   minFractionDigits="0"/>
+                                   -->
+              </amx:outputText>            
+            </amx:cellFormat>
+            <amx:cellFormat id="cf8" width="42px">
+              <amx:panelGroupLayout id="pgl9" layout="horizontal" valign="middle">
+                <!--                    
+                <amx:commandLink text="" id="cl2"
+                                 actionListener="#{pageFlowScope.PickUpProductBean.increasequantity}">
+                
+                  <amx:setPropertyListener id="spl3" from="#{row.id}"
+                                           to="#{pageFlowScope.selectedProductId}"
+                                           type="action"/>
+                  <amx:actionListener id="al1" binding="#{bindings.setCurrentRowWithKey.execute}"/>
+                  <amx:image id="i3" source="/images/plus.png" inlineStyle="width:20px;height:20px;"/>
+                </amx:commandLink>
+                -->
+                
+                <amx:commandLink text="" id="cl2" actionListener="#{pageFlowScope.ShoppingCartBean.setQuantity}">
+                    <amx:setPropertyListener id="spl5" from="#{row.id}"
+                                           to="#{pageFlowScope.selectedProductId}"
+                                           type="action"/>
+                    <amx:actionListener id="al1" binding="#{bindings.setCurrentRowWithKey.execute}"/>
+                    <amx:setPropertyListener id="spl3" from="#{row.quantity + 1}"
+                                           to="#{row.quantity}"
+                                           type="action"/>
+                  <amx:image id="i10" source="/images/plus.png" inlineStyle="width:20px;height:20px;"/>
+
+                </amx:commandLink>
+                <amx:commandLink text="" id="cl1" rendered="#{row.quantity gt 0}"
+                                 actionListener="#{pageFlowScope.ShoppingCartBean.setQuantity}">
+                    <amx:setPropertyListener id="spl6" from="#{row.id}"
+                                           to="#{pageFlowScope.selectedProductId}"
+                                           type="action"/>
+                    <amx:actionListener id="al2" binding="#{bindings.setCurrentRowWithKey.execute}"/>
+                    <amx:setPropertyListener id="spl2" type="action" from="#{row.quantity - 1}"
+                                           to="#{row.quantity}"/>
+                  <amx:image id="i11" source="/images/minus.jpeg" inlineStyle="width:20px;height:20px;"/>
+                </amx:commandLink>
+                
+              </amx:panelGroupLayout>
+            
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>        
+      </amx:listItem>
+    </amx:listView>
+    <amx:panelFormLayout id="pfl1">
+        
+      <amx:inputText label="#{viewcontrollerBundle.pickup_cart_totalPrice}" id="it1"
+                     value="#{bindings.totalPrice.inputValue}" readOnly="true" inputType="number">
+         <!--            
+        <amx:convertNumber id="cn1" type="currency" currencyCode="KRW" minFractionDigits="0"
+                           currencySymbol="#{viewcontrollerBundle.pickup_common_currencyWon}"/>
+                           -->
+      </amx:inputText>
+      <amx:inputDate label="#{viewcontrollerBundle.pickup_cart_pickupDate}" id="id1" inputType="datetime"
+                     value="#{pageFlowScope.ShoppingCartBean.pickupDate}"/>
+    </amx:panelFormLayout>
+    <amx:panelGroupLayout id="pgl11" halign="center" layout="horizontal">
+      <amx:commandButton id="cb3" action="sendRequest" text="#{viewcontrollerBundle.pickup_cart_sendRequest}"
+                         disabled="#{bindings.totalPrice.inputValue == 0}">
+        <amx:setPropertyListener id="spl1" from="#{bindings.totalPrice.inputValue}" to="#{pageFlowScope.totalPrice}"/>
+      </amx:commandButton>
+      <!--
+      <amx:commandButton actionListener="#{bindings.discard.execute}" text="#{viewcontrollerBundle.pickup_cart_discard}"
+                         disabled="#{bindings.totalPrice.inputValue == 0}" id="cb4" action="discard"/>
+                         -->
+    </amx:panelGroupLayout>
+  </amx:panelPage>
+</amx:view>

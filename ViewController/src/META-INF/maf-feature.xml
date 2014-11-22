@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+  <adfmf:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle"/>
+  <adfmf:feature id="mafdemo.retail.bgf.CU" name="CU">
+    <adfmf:content id="mafdemo.retail.bgf.CU.1" icon="images/cu_logo.png" image="images/cu_logo.png">
+      <adfmf:constraints/>
+      <adfmf:remoteURL connection="cu_url_connection"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="mafdemo.retail.bgf.PickUp" name="#{viewcontrollerBundle.pickup_common_featureName}">
+    <adfmf:content id="mafdemo.retail.bgf.PickUp.1">
+      <adfmf:amx file="mafdemo.retail.bgf.PickUp/PickUpCustomer-task-flow.xml#PickUpCustomer-task-flow"/>
+    </adfmf:content>
+  </adfmf:feature>
+</adfmf:features>

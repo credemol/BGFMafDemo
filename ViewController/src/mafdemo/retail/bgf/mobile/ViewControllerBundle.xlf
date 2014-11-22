@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1">
+  <file source-language="en" original="mafdemo.retail.bgf.mobile.ViewControllerBundle" datatype="x-oracle-adf">
+    <body>
+      <trans-unit id="pickup_common_featureName">
+        <source>Pickup</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_common_shoppingCart">
+        <source>Cart</source>
+        <target/>
+      </trans-unit>   
+      <trans-unit id="pickup_common_pickupHistory">
+        <source>History</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_common_search">
+        <source>Search</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_common_choose">
+        <source>Choose</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_common_productPage">
+        <source>Products</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_common_goHome">
+        <source>Home</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_common_back">
+        <source>Back</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_common_currencyWon">
+        <source>Won</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_common_currencySymbol">
+        <source>₩</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pickup_common_countUnit">
+        <source>EA</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_store_header">
+        <source>Select a Store</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_store_province">
+        <source>Province</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_store_district">
+        <source>District</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_store_storeName">
+        <source>Store Name</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_store_chooseProvince">
+        <source>Choose</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_store_chooseDistrict">
+        <source>Choose</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_product_header">
+        <source>Select Products</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_product_category">
+        <source>Category</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_product_productName">
+        <source>Product Name</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pickup_product_chooseCategory">
+        <source>Choose</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_product_goStore">
+        <source>Store</source>
+        <target/>
+      </trans-unit>         
+      <trans-unit id="pickup_cart_header">
+        <source>Shopping Cart</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pickup_cart_header">
+        <source>Shopping Cart</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pickup_cart_history">
+        <source>History</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pickup_cart_items">
+        <source>Items</source>
+        <target/>
+      </trans-unit>         
+      <trans-unit id="pickup_cart_selectedStore">
+        <source>Store Information</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_cart_totalPrice">
+        <source>Total Price</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pickup_cart_pickupDate">
+        <source>Pickup Date</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_cart_sendRequest">
+        <source>Send Request</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pickup_cart_discard">
+        <source>Discard</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pickup_history_header">
+        <source>Pickup History</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.PickUpOrder.pickupDate_FMT_FORMAT">
+        <source>yyyy-MM-dd HH:mm</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.PickUpOrder.orderDate_FMT_FORMATTER">
+        <source>oracle.jbo.format.DefaultDateFormatter</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.PickUpOrder.pickupDate_FMT_FORMATTER">
+        <source>oracle.jbo.format.DefaultDateFormatter</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.PickUpOrder.orderDate_FMT_FORMAT">
+        <source>yyyy-MM-dd</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_history_storeName">
+        <source>Store Name</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pickup_history_orderDate">
+        <source>Order Date</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pickup_history_orderStatus">
+        <source>Status</source>
+        <target/>
+      </trans-unit>            
+      <trans-unit id="pickup_historyDetail_header">
+        <source>Pickup Detail</source>
+        <target/>
+      </trans-unit>          
+      <trans-unit id="pickup_historyDetail_orderId">
+        <source>Order ID</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_historyDetail_status">
+        <source>Status</source>
+        <target/>
+      </trans-unit>   
+      <trans-unit id="pickup_historyDetail_customerId">
+        <source>Customer ID</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_storeId">
+        <source>Store ID</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_pickupDate">
+        <source>Pickup Date</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_orderDate">
+        <source>Transaction Date</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_totalPrice">
+        <source>Total Price</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_storeName">
+        <source>Store Name</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_items">
+        <source>Items</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_storeAddress">
+        <source>Store Address</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_storeLocation_header">
+        <source>점포 위치</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pickup_storeLocation_header">
+        <source>Store Location</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pickup_storeLocation_storeName">
+        <source>Store Name</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_storeLocation_address">
+        <source>Address: </source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.Product.price_FMT_FORMAT">
+        <source>###,###</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.Product.price_FMT_FORMATTER">
+        <source>oracle.jbo.format.DefaultNumberFormatter</source>
+        <target/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

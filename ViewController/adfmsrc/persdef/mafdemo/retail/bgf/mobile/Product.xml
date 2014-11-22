@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE PDefViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<PDefViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Product"
+  Version="12.1.3.2.36">
+  <DesignTime>
+    <Attr Name="_DCName" Value="mafdemo.retail.bgf.mobile.DataControls.ProductDC"/>
+    <Attr Name="_SDName" Value="mafdemo.retail.bgf.mobile.Product"/>
+  </DesignTime>
+  <PDefAttribute
+    Name="id"
+    PrimaryKey="true"
+    IsUpdateable="true"/>
+  <PDefAttribute
+    Name="price"
+    IsUpdateable="true">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMAT
+          ResId="${adfBundle['mafdemo.retail.bgf.mobile.ViewControllerBundle']['mafdemo.retail.bgf.mobile.Product.price_FMT_FORMAT']}"/>
+        <FMT_FORMATTER
+          ResId="${adfBundle['mafdemo.retail.bgf.mobile.ViewControllerBundle']['mafdemo.retail.bgf.mobile.Product.price_FMT_FORMATTER']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </PDefAttribute>
+</PDefViewObject>

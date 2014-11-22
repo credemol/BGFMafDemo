@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
+                   version="1.0" name="#{appBundle.retaildemo_appName}" id="com.archnal.mobile.BGFMafDemo"
+                   appControllerFolder="ApplicationController"
+                   listener-class="mafdemo.retail.bgf.application.LifeCycleListenerImpl">
+  <adfmf:loadBundle basename="BGFMafDemoBundle" var="appBundle"/>
+  <adfmf:deviceFeatureAccess>
+    <adfmf:deviceNetwork access="true" id="dn1"/>
+    <adfmf:deviceCamera access="true" id="dc1"/>
+    <adfmf:deviceContacts access="true" id="dc2"/>
+    <adfmf:deviceEmails access="true" id="de1"/>
+    <adfmf:deviceFiles access="true" id="df1"/>
+    <adfmf:deviceLocation access="true" id="dl1"/>
+    <adfmf:devicePhone access="true" id="dp1"/>
+    <adfmf:devicePushNotifications access="true" id="dpn1"/>
+    <adfmf:deviceSMS access="true" id="dsms1"/>
+  </adfmf:deviceFeatureAccess>
+  <adfmf:featureReference id="mafdemo.retail.bgf.CU"/>
+  <adfmf:featureReference id="mafdemo.retail.bgf.PickUp"/>
+  <adfmf:remoteURLWhiteList>
+    <adfmf:domain id="d1">cu.bgfretail.com</adfmf:domain>
+    <adfmf:domain id="d2">cdn2.bgfretail.com</adfmf:domain>
+  </adfmf:remoteURLWhiteList>
+</adfmf:application>

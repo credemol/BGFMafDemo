@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="pickup_cartPageDef"
+                Package="mafdemo.retail.bgf.PickUp">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ShoppingCartDC" id="ShoppingCartDCIterator"/>
+    <accessorIterator MasterBinding="ShoppingCartDCIterator" Binds="selectedProducts" RangeSize="25"
+                      DataControl="ShoppingCartDC" BeanClass="mafdemo.retail.bgf.mobile.Product"
+                      id="selectedProductsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ProductDC" id="ProductDCIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="selectedProductsIterator" id="selectedProducts">
+      <nodeDefinition DefName="mafdemo.retail.bgf.mobile.Product" Name="selectedProducts0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="id"/>
+          <Item Value="image"/>
+          <Item Value="price"/>
+          <Item Value="quantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="selectedProductsIterator" id="setCurrentRowWithKey" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKey" NDValue="#{pageFlowScope.selectedProductId}" NDType="java.lang.String"/>
+    </action>
+    <methodAction id="updateProduct" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updateProduct"
+                  IsViewObjectMethod="false" DataControl="ProductDC" InstanceName="data.ProductDC.dataProvider">
+      <NamedData NDName="product" NDValue="#{pageFlowScope.updatableProduct}"
+                 NDType="mafdemo.retail.bgf.mobile.Product"/>
+    </methodAction>
+    <methodAction id="discard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="discard"
+                  IsViewObjectMethod="false" DataControl="ShoppingCartDC"
+                  InstanceName="data.ShoppingCartDC.dataProvider"/>
+    <methodAction id="calculateTotalPrice" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="calculateTotalPrice" IsViewObjectMethod="false" DataControl="ShoppingCartDC"
+                  InstanceName="data.ShoppingCartDC.dataProvider"/>
+    <attributeValues IterBinding="ShoppingCartDCIterator" id="totalPrice">
+      <AttrNames>
+        <Item Value="totalPrice"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

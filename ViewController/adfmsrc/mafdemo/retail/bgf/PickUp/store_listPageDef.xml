@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="store_listPageDef"
+                Package="mafdemo.retail.bgf.PickUp">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="StoreDC" id="StoreDCIterator"/>
+    <accessorIterator MasterBinding="StoreDCIterator" Binds="provinces" RangeSize="25" DataControl="StoreDC"
+                      BeanClass="mafdemo.retail.bgf.mobile.Province" id="provincesIterator"/>
+    <accessorIterator MasterBinding="StoreDCIterator" Binds="districts" RangeSize="25" DataControl="StoreDC"
+                      BeanClass="mafdemo.retail.bgf.mobile.District" id="districtsIterator"/>
+    <accessorIterator MasterBinding="StoreDCIterator" Binds="stores" RangeSize="25" DataControl="StoreDC"
+                      BeanClass="mafdemo.retail.bgf.mobile.Store" id="storesIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="provincesIterator" ListOperMode="navigation" ListIter="provincesIterator" id="provinces"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="districtsIterator" ListOperMode="navigation" ListIter="districtsIterator" id="districts"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <methodAction id="executeFindDistricts" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="executeFindDistricts" IsViewObjectMethod="false" DataControl="StoreDC"
+                  InstanceName="data.StoreDC.dataProvider">
+      <NamedData NDName="provinceCode" NDValue="#{pageFlowScope.selectedProvinceCode}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="executeFindStores" RequiresUpdateModel="true" Action="invokeMethod" MethodName="executeFindStores"
+                  IsViewObjectMethod="false" DataControl="StoreDC" InstanceName="data.StoreDC.dataProvider">
+      <NamedData NDName="provinceCode" NDValue="#{pageFlowScope.selectedProvinceCode}" NDType="java.lang.String"/>
+      <NamedData NDName="districtCode" NDValue="#{pageFlowScope.selectedDistrictCode}" NDType="java.lang.String"/>
+      <NamedData NDName="storeName" NDValue="#{pageFlowScope.selectedStoreName}" NDType="java.lang.String"/>
+      <NamedData NDName="service01" NDValue="#{pageFlowScope.service01}" NDType="boolean"/>
+      <NamedData NDName="service02" NDValue="#{pageFlowScope.service02}" NDType="boolean"/>
+      <NamedData NDName="service03" NDValue="#{pageFlowScope.service03}" NDType="boolean"/>
+      <NamedData NDName="service04" NDValue="#{pageFlowScope.service04}" NDType="boolean"/>
+      <NamedData NDName="service05" NDValue="#{pageFlowScope.service05}" NDType="boolean"/>
+      <NamedData NDName="service06" NDValue="#{pageFlowScope.service06}" NDType="boolean"/>
+      <NamedData NDName="service07" NDValue="#{pageFlowScope.service07}" NDType="boolean"/>
+      <NamedData NDName="service08" NDValue="#{pageFlowScope.service08}" NDType="boolean"/>
+    </methodAction>
+    <tree IterBinding="storesIterator" id="stores">
+      <nodeDefinition DefName="mafdemo.retail.bgf.mobile.Store" Name="stores0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="id"/>
+          <Item Value="key"/>
+          <Item Value="newAddress"/>
+          <Item Value="oldAddress"/>
+          <Item Value="provinceDistrictId"/>
+          <Item Value="service01"/>
+          <Item Value="service02"/>
+          <Item Value="service03"/>
+          <Item Value="service04"/>
+          <Item Value="service05"/>
+          <Item Value="service06"/>
+          <Item Value="service07"/>
+          <Item Value="service08"/>
+          <Item Value="serviceIcons"/>
+          <Item Value="telNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="storesIterator" id="setCurrentRowWithKey" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKey" NDValue="#{pageFlowScope.selectedStoreId}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

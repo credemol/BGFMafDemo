@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="PickUpCustomer-task-flow">
+    <default-activity>store-list</default-activity>
+    <managed-bean id="__5">
+      <managed-bean-name>PickUpStoreBean</managed-bean-name>
+      <managed-bean-class>mafdemo.retail.bgf.mobile.PickUpStoreBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name>PickUpProductBean</managed-bean-name>
+      <managed-bean-class>mafdemo.retail.bgf.mobile.PickUpProductBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__14">
+      <managed-bean-name>ShoppingCartBean</managed-bean-name>
+      <managed-bean-class>mafdemo.retail.bgf.mobile.ShoppingCartBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__11">
+      <managed-bean-name>PickUpHistoryBean</managed-bean-name>
+      <managed-bean-class>mafdemo.retail.bgf.mobile.PickUpHistoryBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__27">
+      <managed-bean-name>StoreLocationBean</managed-bean-name>
+      <managed-bean-class>mafdemo.retail.bgf.mobile.StoreLocationBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="store-list">
+      <page>/mafdemo.retail.bgf.PickUp/store-list.amx</page>
+    </view>
+    <view id="product-list">
+      <page>/mafdemo.retail.bgf.PickUp/product-list.amx</page>
+    </view>
+    <view id="pickup-cart">
+      <page>/mafdemo.retail.bgf.PickUp/pickup-cart.amx</page>
+    </view>
+    <view id="pickup-history">
+      <page>/mafdemo.retail.bgf.PickUp/pickup-history.amx</page>
+    </view>
+    <view id="history-detail">
+      <page>/mafdemo.retail.bgf.PickUp/history-detail.amx</page>
+    </view>
+    <method-call id="callSendRequestService">
+      <method>#{pageFlowScope.ShoppingCartBean.sendRequest}</method>
+      <outcome>
+        <fixed-outcome>goRoute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="sendRequestServiceRoute">
+      <case id="__24">
+        <expression>#{pageFlowScope.sendRequestServiceResult == true}</expression>
+        <outcome>done</outcome>
+      </case>
+      <case id="__25">
+        <expression>#{pageFlowScope.sendRequestServiceResult == false}</expression>
+        <outcome>failed</outcome>
+      </case>
+      <default-outcome>done</default-outcome>
+    </router>
+    <view id="store-location">
+      <page>/mafdemo.retail.bgf.PickUp/store-location.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>store-list</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>chooseProducts</from-outcome>
+        <to-activity-id>product-list</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>viewHistory</from-outcome>
+        <to-activity-id>pickup-history</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>viewLocation</from-outcome>
+        <to-activity-id>store-location</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>product-list</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>chooseStore</from-outcome>
+        <to-activity-id>store-list</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>viewCart</from-outcome>
+        <to-activity-id>pickup-cart</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>pickup-cart</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>sendRequest</from-outcome>
+        <to-activity-id>callSendRequestService</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>chooseProducts</from-outcome>
+        <to-activity-id>product-list</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>viewHistory</from-outcome>
+        <to-activity-id>pickup-history</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>pickup-history</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>viewDetail</from-outcome>
+        <to-activity-id>history-detail</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>goHome</from-outcome>
+        <to-activity-id>store-list</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__30">
+        <from-outcome>viewLocation</from-outcome>
+        <to-activity-id>store-location</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>callSendRequestService</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>goRoute</from-outcome>
+        <to-activity-id>sendRequestServiceRoute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id>sendRequestServiceRoute</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome>failed</from-outcome>
+        <to-activity-id>pickup-cart</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__23">
+        <from-outcome>done</from-outcome>
+        <to-activity-id>pickup-history</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__28">
+      <from-activity-id>history-detail</from-activity-id>
+      <control-flow-case id="__29">
+        <from-outcome>viewLocation</from-outcome>
+        <to-activity-id>store-location</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-mobile-config>

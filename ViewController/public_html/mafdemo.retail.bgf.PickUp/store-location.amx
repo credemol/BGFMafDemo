@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle" id="lb1"/>
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText id="ot1" value="#{pageFlowScope.StoreLocationBean.store.name}"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelStretchLayout id="psl1">
+      <amx:facet name="top">
+          <amx:outputText value="#{viewcontrollerBundle.pickup_storeLocation_address} #{pageFlowScope.StoreLocationBean.store.oldAddress}" id="ot2"
+                          inlineStyle="font-size:small; margin-left:20px;"/>
+      </amx:facet>
+      <amx:facet name="center">
+        <dvtm:geographicMap id="geomp1" mapType="ROADMAP" zoomLevel="15"
+                            inlineStyle="border-style:solid; border-width:thin; border-color:#949494;">
+          <dvtm:pointDataLayer id="pdl1">
+            <dvtm:pointLocation id="pl1" address="#{pageFlowScope.StoreLocationBean.store.oldAddress}" type="address"/>
+          </dvtm:pointDataLayer>
+        </dvtm:geographicMap>
+      </amx:facet>
+      <amx:facet name="bottom"/>
+    </amx:panelStretchLayout>
+  </amx:panelPage>
+</amx:view>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.36" id="DataBindings"
+             SeparateXMLFiles="false" Package="mafdemo.retail.bgf.mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/mafdemo.retail.bgf.Shop/customer_index.amx" usageId="mafdemo_retail_bgf_mobile_customer_indexPageDef"/>
+    <page path="/mafdemo.retail.bgf.Shop/store_search.amx" usageId="mafdemo_retail_bgf_mobile_store_searchPageDef"/>
+    <page path="/mafdemo.retail.bgf.Shop/store_search_result.amx"
+          usageId="mafdemo_retail_bgf_mobile_store_search_resultPageDef"/>
+    <page path="/mafdemo.retail.bgf.Shop/product_search.amx" usageId="mafdemo_retail_bgf_mobile_product_searchPageDef"/>
+    <page path="/mafdemo.retail.bgf.PickUp/store-list.amx" usageId="mafdemo_retail_bgf_mobile_store_listPageDef"/>
+    <page path="/mafdemo.retail.bgf.PickUp/product-list.amx" usageId="mafdemo_retail_bgf_mobile_product_listPageDef"/>
+    <page path="/mafdemo.retail.bgf.PickUp/pickup-cart.amx" usageId="mafdemo_retail_bgf_mobile_pickup_cartPageDef"/>
+    <page path="/mafdemo.retail.bgf.PickUp/pickup-history.amx"
+          usageId="mafdemo_retail_bgf_mobile_pickup_historyPageDef"/>
+    <page path="/mafdemo.retail.bgf.PickUp/history-detail.amx"
+          usageId="mafdemo_retail_bgf_mobile_history_detailPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="mafdemo_retail_bgf_mobile_customer_indexPageDef" path="mafdemo.retail.bgf.Shop.customer_indexPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_store_searchPageDef" path="mafdemo.retail.bgf.Shop.store_searchPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_store_search_resultPageDef"
+          path="mafdemo.retail.bgf.Shop.store_search_resultPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_product_searchPageDef" path="mafdemo.retail.bgf.Shop.product_searchPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_store_listPageDef" path="mafdemo.retail.bgf.PickUp.store_listPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_product_listPageDef" path="mafdemo.retail.bgf.PickUp.product_listPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_pickup_cartPageDef" path="mafdemo.retail.bgf.PickUp.pickup_cartPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_pickup_historyPageDef" path="mafdemo.retail.bgf.PickUp.pickup_historyPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_history_detailPageDef" path="mafdemo.retail.bgf.PickUp.history_detailPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="PickUpHistoryDC" path="mafdemo.retail.bgf.mobile.PickUpHistoryDC"/>
+    <dc id="StoreDC" path="mafdemo.retail.bgf.mobile.StoreDC"/>
+    <dc id="ShoppingCartDC" path="mafdemo.retail.bgf.mobile.ShoppingCartDC"/>
+    <dc id="ProductDC" path="mafdemo.retail.bgf.mobile.ProductDC"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle" id="lb1"/>
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="#{viewcontrollerBundle.pickup_historyDetail_header}" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelFormLayout id="pfl1">
+      <amx:panelLabelAndMessage label="#{viewcontrollerBundle.pickup_historyDetail_orderId}" id="plam3">
+        <amx:outputText value="#{bindings.id.inputValue}" id="ot4"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage id="plam6" label="#{viewcontrollerBundle.pickup_historyDetail_storeName}">
+          <amx:commandLink text="" id="cl9" action="viewLocation"
+                           actionListener="#{pageFlowScope.StoreLocationBean.selectStore}">
+            <amx:setPropertyListener id="spl2" from="#{bindings.storeId.inputValue}" to="#{pageFlowScope.locationStoreId}"
+                                     type="action"/>
+            <amx:outputText value="#{bindings.storeName.inputValue}" id="ot7"/>
+          </amx:commandLink>  
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage id="plam8" label="#{viewcontrollerBundle.pickup_historyDetail_storeId}">
+        <amx:outputText value="#{bindings.storeId.inputValue}" id="ot9"/>
+      </amx:panelLabelAndMessage>      
+      <amx:panelLabelAndMessage id="plam2" label="#{viewcontrollerBundle.pickup_history_orderStatus}">
+        <amx:outputText value="#{bindings.status.inputValue}" id="ot3"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage id="plam5" label="#{viewcontrollerBundle.pickup_historyDetail_customerId}">
+        <amx:outputText value="#{bindings.customerId.inputValue}" id="ot6"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage id="plam7" label="#{viewcontrollerBundle.pickup_cart_pickupDate}">
+        <amx:outputText value="#{bindings.pickupDate.inputValue}" id="ot8">
+          <amx:convertDateTime pattern="yy-MM-dd HH:mm" id="cdt2" type="both"/>
+        </amx:outputText>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage id="plam4" label="#{viewcontrollerBundle.pickup_historyDetail_orderDate}">
+        <amx:outputText value="#{bindings.orderDate.inputValue}" id="ot5">
+          <amx:convertDateTime pattern="yy-MM-dd HH:mm" id="cdt1" type="both"/>
+        </amx:outputText>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage id="plam10" label="#{viewcontrollerBundle.pickup_historyDetail_totalPrice}">
+        <amx:outputText value="#{bindings.totalPrice.inputValue} #{viewcontrollerBundle.pickup_common_currencySymbol}" id="ot11">
+            <!--
+          <amx:convertNumber id="cn2" type="currency" currencyCode="KRW" minFractionDigits="0"
+                             currencySymbol="#{viewcontrollerBundle.pickup_common_currencySymbol}"/>
+                             -->
+        </amx:outputText>
+      </amx:panelLabelAndMessage>
+    </amx:panelFormLayout>
+    <amx:tableLayout id="tl1" inlineStyle="margin-left:10px; margin-right:10px;">
+      <amx:rowLayout id="rl1">
+        <amx:cellFormat id="cf1" width="60">
+          <amx:outputText value="#{viewcontrollerBundle.pickup_historyDetail_storeAddress}" id="ot2"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf2">
+          <amx:outputText value="#{bindings.storeNewAddress.inputValue}" id="ot15" inlineStyle="font-size:small;"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+
+    <amx:panelLabelAndMessage label="#{viewcontrollerBundle.pickup_historyDetail_items}" id="plam1"
+                              inlineStyle="outline-style:solid; outline-width:thin;"/>
+    <amx:listView var="row" value="#{bindings.products.collectionModel}" fetchSize="#{bindings.products.rangeSize}"
+                  selectedRowKeys="#{bindings.products.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.products.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1">
+        <amx:tableLayout id="tl2" width="100%">
+          <amx:rowLayout id="rl2">
+            <amx:cellFormat id="cf3" width="44" inlineStyle="padding-left:2px;">
+              <amx:image id="i1" source="#{row.image}" inlineStyle="width:40px; height:40px;"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf5">
+              <amx:outputText value="#{row.name}" id="ot10"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf4" width="160">
+              <amx:outputText value="#{row.price} #{viewcontrollerBundle.pickup_common_currencySymbol} - #{row.quantity} #{viewcontrollerBundle.pickup_common_countUnit}"
+                              id="ot12" inlineStyle="padding-left:5px; font-size:small;"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle" id="lb1"/>
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="#{viewcontrollerBundle.pickup_history_header}" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back" text="#{viewcontrollerBundle.pickup_common_back}"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" action="goHome" text="#{viewcontrollerBundle.pickup_common_goHome}"/>
+    </amx:facet>
+    <amx:listView var="row" value="#{bindings.pickUpOrders.collectionModel}"
+                  fetchSize="#{bindings.pickUpOrders.rangeSize}"
+                  selectedRowKeys="#{bindings.pickUpOrders.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.pickUpOrders.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1" action="viewDetail">
+        <amx:tableLayout id="tl1">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat id="cf1" inlineStyle="width:32px;padding-left:2px;">
+              <amx:image id="i1"
+                         source="#{row.status == '10' ? '/images/pickup_done.jpeg' : '/images/pickup_accepted.jpeg'}"
+                         inlineStyle="width:30px; height:30px;"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf2">
+              <amx:panelFormLayout id="pfl1">
+                <amx:panelLabelAndMessage label="#{viewcontrollerBundle.pickup_history_storeName}" id="plam2">
+                  <amx:outputText value="#{row.storeName}" id="ot4"/>
+                </amx:panelLabelAndMessage>
+                <amx:panelLabelAndMessage id="plam3" label="#{viewcontrollerBundle.pickup_history_orderDate}">
+                  <amx:outputText value="#{row.orderDate}" id="ot3" inlineStyle="font-size:small;">
+                    <amx:convertDateTime id="cdt1" pattern="yy-MM-dd HH:mm"/>
+                  </amx:outputText>
+                </amx:panelLabelAndMessage>
+              </amx:panelFormLayout>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

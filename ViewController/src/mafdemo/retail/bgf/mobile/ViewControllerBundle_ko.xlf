@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1">
+  <file source-language="ko" original="mafdemo.retail.bgf.mobile.ViewControllerBundle_ko" datatype="x-oracle-adf">
+    <body>
+      <trans-unit id="pickup_common_featureName">
+        <source>픽업</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_common_shoppingCart">
+        <source>장바구니</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_common_pickupHistory">
+        <source>이력보기</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_common_search">
+        <source>검색</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pickup_common_choose">
+        <source>선택</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_common_productPage">
+        <source>상품선택</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_common_goHome">
+        <source>Home</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_common_back">
+        <source>뒤로</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_common_currencyWon">
+        <source>원</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_common_currencySymbol">
+        <source>₩</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_common_countUnit">
+        <source>개</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_store_header">
+        <source>점포선택</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_store_province">
+        <source>시/도</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_store_district">
+        <source>구/군</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_store_storeName">
+        <source>점포명</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pickup_store_chooseProvince">
+        <source>선택하세요</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_store_chooseDistrict">
+        <source>선택하세요</source>
+        <target/>
+      </trans-unit>   
+      <trans-unit id="pickup_product_header">
+        <source>제품 선택</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_product_category">
+        <source>제품분류</source>
+        <target/>
+      </trans-unit>   
+      <trans-unit id="pickup_product_productName">
+        <source>제품명</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_product_chooseCategory">
+        <source>선택하세요</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_product_goStore">
+        <source>점포</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pickup_cart_header">
+        <source>장바구니</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pickup_cart_history">
+        <source>구매이력</source>
+        <target/>
+      </trans-unit>   
+      <trans-unit id="pickup_cart_items">
+        <source>구매요청 목록</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pickup_cart_selectedStore">
+        <source>점포 정보</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_cart_totalPrice">
+        <source>총 금액</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pickup_cart_pickupDate">
+        <source>수령일시</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_cart_sendRequest">
+        <source>요청 보내기</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pickup_cart_discard">
+        <source>삭제하기</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pickup_history_header">
+        <source>픽업 이력</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="mafdemo.retail.bgf.mobile.PickUpOrder.pickupDate_FMT_FORMAT">
+        <source>yyyy-MM-dd HH:mm</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.PickUpOrder.orderDate_FMT_FORMATTER">
+        <source>oracle.jbo.format.DefaultDateFormatter</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.PickUpOrder.pickupDate_FMT_FORMATTER">
+        <source>oracle.jbo.format.DefaultDateFormatter</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.PickUpOrder.orderDate_FMT_FORMAT">
+        <source>yyyy-MM-dd</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pickup_history_storeName">
+        <source>점포명</source>
+        <target/>
+      </trans-unit>                
+      <trans-unit id="pickup_history_orderDate">
+        <source>주문일시</source>
+        <target/>
+      </trans-unit>            
+      <trans-unit id="pickup_history_orderStatus">
+        <source>상태</source>
+        <target/>
+      </trans-unit>            
+      <trans-unit id="pickup_historyDetail_header">
+        <source>픽업 상세보기</source>
+        <target/>
+      </trans-unit>          
+      <trans-unit id="pickup_historyDetail_orderId">
+        <source>주문 ID</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_historyDetail_status">
+        <source>상태</source>
+        <target/>
+      </trans-unit>   
+      <trans-unit id="pickup_historyDetail_customerId">
+        <source>고객 ID</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_storeId">
+        <source>점포 ID</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_pickupDate">
+        <source>픽업 희망 일시</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_orderDate">
+        <source>거래일시</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_totalPrice">
+        <source>총 금액</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_storeName">
+        <source>점포명</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_items">
+        <source>구매 내역</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_historyDetail_storeAddress">
+        <source>점포 주소</source>
+        <target/>
+      </trans-unit> 
+      <trans-unit id="pickup_storeLocation_header">
+        <source>점포 위치</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pickup_storeLocation_storeName">
+        <source>점포명</source>
+        <target/>
+      </trans-unit>    
+      <trans-unit id="pickup_storeLocation_address">
+        <source>주소: </source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="mafdemo.retail.bgf.mobile.Product.price_FMT_FORMAT">
+        <source>###,###</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="mafdemo.retail.bgf.mobile.Product.price_FMT_FORMATTER">
+        <source>oracle.jbo.format.DefaultNumberFormatter</source>
+        <target/>
+      </trans-unit>      
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle" id="lb1"/>
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="#{viewcontrollerBundle.pickup_product_header}" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="chooseStore" text="#{viewcontrollerBundle.pickup_product_goStore}"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" text="#{viewcontrollerBundle.pickup_common_shoppingCart}"
+                         action="viewCart"/>
+    </amx:facet>
+    <amx:panelFormLayout id="pfl1">
+      <amx:selectOneChoice value="#{bindings.productCategories.inputValue}"
+                           label="#{viewcontrollerBundle.pickup_product_category}"
+                           id="soc1" valueChangeListener="#{pageFlowScope.PickUpProductBean.selectCategory}">
+        <amx:selectItem id="si2" label="#{viewcontrollerBundle.pickup_product_chooseCategory}" value=""/>
+        <amx:selectItems value="#{bindings.productCategories.items}" id="si1"/>
+      </amx:selectOneChoice>
+      <amx:inputText id="it1" label="#{viewcontrollerBundle.pickup_product_productName}"
+                     value="#{pageFlowScope.productNameQuery}"
+                     valueChangeListener="#{pageFlowScope.PickUpProductBean.productNameChanged}"/>
+    </amx:panelFormLayout>
+    <amx:listView var="row" value="#{bindings.products.collectionModel}" fetchSize="#{bindings.products.rangeSize}"
+                  selectedRowKeys="#{bindings.products.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.products.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv2">
+      <amx:listItem id="li2">
+        <amx:tableLayout id="tl1" width="100%">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat id="cf1" width="44px" halign="center" inlineStyle="padding-left:2px;">
+                <amx:image source="#{row.image}" id="i1" inlineStyle="height:40px; width:40px;"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf2" width="100%" height="43px">
+              <amx:outputText value="#{row.name} - #{row.quantity} #{viewcontrollerBundle.pickup_common_countUnit}" id="ot2"
+                              inlineStyle="font-size:small;"/>
+              <amx:outputText value="#{row.price} #{viewcontrollerBundle.pickup_common_currencySymbol}"  id="ot3"
+                              inlineStyle="font-size:small;">
+              <!--
+                <amx:convertNumber id="cn1" type="currency"
+                                   currencySymbol="#{viewcontrollerBundle.pickup_common_currencySymbol}"
+                                   currencyCode="KRW" minFractionDigits="0"/>
+               -->                    
+              </amx:outputText>            
+            </amx:cellFormat>
+            <amx:cellFormat id="cf3" width="42px">
+              <amx:panelGroupLayout id="pgl1" layout="horizontal" valign="middle">
+                <!--                    
+                <amx:commandLink text="" id="cl2"
+                                 actionListener="#{pageFlowScope.PickUpProductBean.increaseQuantity}">
+                
+                  <amx:setPropertyListener id="spl3" from="#{row.id}"
+                                           to="#{pageFlowScope.selectedProductId}"
+                                           type="action"/>
+                  <amx:actionListener id="al1" binding="#{bindings.setCurrentRowWithKey.execute}"/>
+                  <amx:image id="i3" source="/images/plus.png" inlineStyle="width:20px;height:20px;"/>
+                </amx:commandLink>
+                -->
+                <amx:commandLink text="" id="cl2" actionListener="#{pageFlowScope.PickUpProductBean.setQuantity}">
+                    <amx:setPropertyListener id="spl5" from="#{row.id}"
+                                           to="#{pageFlowScope.selectedProductId}"
+                                           type="action"/>
+                    <amx:actionListener id="al1" binding="#{bindings.setCurrentRowWithKey.execute}"/>
+                    <amx:setPropertyListener id="spl3" from="#{row.quantity + 1}"
+                                           to="#{row.quantity}"
+                                           type="action"/>
+                  <amx:image id="i3" source="/images/plus.png" inlineStyle="width:20px;height:20px;"/>
+                </amx:commandLink>
+                <amx:commandLink text="" id="cl1" rendered="#{row.quantity gt 0}"
+                                 actionListener="#{pageFlowScope.PickUpProductBean.setQuantity}">
+                    <amx:setPropertyListener id="spl6" from="#{row.id}"
+                                           to="#{pageFlowScope.selectedProductId}"
+                                           type="action"/>
+                    <amx:actionListener id="al2" binding="#{bindings.setCurrentRowWithKey.execute}"/>
+                    <amx:setPropertyListener id="spl2" type="action" from="#{row.quantity - 1}"
+                                           to="#{row.quantity}"/>
+                  <amx:image id="i2" source="/images/minus.jpeg" inlineStyle="width:20px;height:20px;"/>
+                </amx:commandLink>
+                
+              </amx:panelGroupLayout>
+            
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:listItem>
+    </amx:listView>
+    <!--
+    <amx:listView var="row" value="#{bindings.Product.collectionModel}" fetchSize="#{bindings.Product.rangeSize}"
+                  selectedRowKeys="#{bindings.Product.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.Product.collectionModel.makeCurrent}"
+                  showMoreStrategy="autoScroll" bufferStrategy="viewport"
+                  id="lv1">
+      <amx:listItem id="li1">
+        <amx:tableLayout width="100%" id="tl1">
+          <amx:rowLayout id="rl1">         
+            <amx:cellFormat width="40px" halign="center" id="cf1">
+              <amx:image source="#{row.image}" id="i1" inlineStyle="height:38px; width:38px;"/>
+            </amx:cellFormat>
+            <amx:cellFormat width="100%" height="43px" id="cf2" inlineStyle="border-style:solid; border-width:thin;">
+              <amx:outputText value="#{row.id} #{row.name}" id="ot2"/>
+              <amx:outputText value="#{row.quantity}" id="ot4"/>
+              <amx:outputText value="#{row.price}" id="ot3"/>
+              
+            </amx:cellFormat>
+            <amx:cellFormat id="cf3" width="40px">
+              <amx:panelGroupLayout id="pgl1" layout="horizontal" valign="middle"
+                                    inlineStyle="border-style:solid; border-width:thin;">
+                <amx:commandLink text="" id="cl1" rendered="#{row.quantity gt 0}">
+                  <amx:setPropertyListener id="spl2" type="action" from="#{row.quantity - 1}"
+                                           to="#{row.quantity}"/>
+                  <amx:image id="i2" source="/images/minus.jpeg" inlineStyle="width:20px;height:20px;"/>
+                </amx:commandLink>
+                <amx:commandLink text="" id="cl2"
+                                 actionListener="#{pageFlowScope.PickUpProductBean.increaseQuantity}">
+                
+                  <amx:setPropertyListener id="spl3" from="#{row.id}"
+                                           to="#{viewScope.selectedProductId}"
+                                           type="action"/>
+                  <amx:actionListener id="al1" binding="#{bindings.setCurrentRowWithKey.execute}"/>
+                  <amx:image id="i3" source="/images/plus.png" inlineStyle="width:20px;height:20px;"/>
+                </amx:commandLink>
+
+                
+              </amx:panelGroupLayout>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:listItem>
+    </amx:listView>
+    -->
+  </amx:panelPage>
+</amx:view>
