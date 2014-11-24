@@ -14,7 +14,7 @@
                          action="viewCart"/>
     </amx:facet>
     <amx:panelFormLayout id="pfl1">
-      <amx:selectOneChoice value="#{bindings.productCategories.inputValue}"
+      <amx:selectOneChoice value="#{pageFlowScope.selectedCategoryId}"
                            label="#{viewcontrollerBundle.pickup_product_category}"
                            id="soc1" valueChangeListener="#{pageFlowScope.PickUpProductBean.selectCategory}">
         <amx:selectItem id="si2" label="#{viewcontrollerBundle.pickup_product_chooseCategory}" value=""/>

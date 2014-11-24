@@ -54,7 +54,7 @@
     </amx:panelFormLayout>
     <amx:tableLayout id="tl1" inlineStyle="margin-left:10px; margin-right:10px;">
       <amx:rowLayout id="rl1">
-        <amx:cellFormat id="cf1" width="60">
+        <amx:cellFormat id="cf1" width="70">
           <amx:outputText value="#{viewcontrollerBundle.pickup_historyDetail_storeAddress}" id="ot2"/>
         </amx:cellFormat>
         <amx:cellFormat id="cf2">
@@ -64,7 +64,7 @@
     </amx:tableLayout>
 
     <amx:panelLabelAndMessage label="#{viewcontrollerBundle.pickup_historyDetail_items}" id="plam1"
-                              inlineStyle="outline-style:solid; outline-width:thin;"/>
+                              inlineStyle="border-bottom-style:solid; border-bottom-width:thin; border-bottom-color:InactiveCaption;"/>
     <amx:listView var="row" value="#{bindings.products.collectionModel}" fetchSize="#{bindings.products.rangeSize}"
                   selectedRowKeys="#{bindings.products.collectionModel.selectedRow}"
                   selectionListener="#{bindings.products.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
@@ -75,12 +75,12 @@
             <amx:cellFormat id="cf3" width="44" inlineStyle="padding-left:2px;">
               <amx:image id="i1" source="#{row.image}" inlineStyle="width:40px; height:40px;"/>
             </amx:cellFormat>
-            <amx:cellFormat id="cf5">
-              <amx:outputText value="#{row.name}" id="ot10"/>
+            <amx:cellFormat id="cf5" width="100%">
+              <amx:outputText value="#{row.name}" id="ot10" inlineStyle="font-size:small;"/>
             </amx:cellFormat>
-            <amx:cellFormat id="cf4" width="160">
+            <amx:cellFormat id="cf4" width="90" halign="end">
               <amx:outputText value="#{row.price} #{viewcontrollerBundle.pickup_common_currencySymbol} - #{row.quantity} #{viewcontrollerBundle.pickup_common_countUnit}"
-                              id="ot12" inlineStyle="padding-left:5px; font-size:small;"/>
+                              id="ot12" inlineStyle="font-size:small;"/>
             </amx:cellFormat>
           </amx:rowLayout>
         </amx:tableLayout>

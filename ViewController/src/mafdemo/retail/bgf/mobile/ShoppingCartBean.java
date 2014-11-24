@@ -154,6 +154,9 @@ public class ShoppingCartBean {
         
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.sendRequestServiceResult}", sendRequestServiceResult);
         
+        if(sendRequestServiceResult.booleanValue()) {
+            quantityMap.clear();
+        }
         TraceLog.info(getClass(), "sendRequest", "END");
     }
 

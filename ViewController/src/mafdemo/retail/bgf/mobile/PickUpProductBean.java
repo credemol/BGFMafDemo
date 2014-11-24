@@ -105,14 +105,15 @@ public class PickUpProductBean {
     private void searchProducts() {
         TraceLog.info(getClass(), "searchProducts", "START");
         
-        String categoryId = (String)AdfmfJavaUtilities.getELValue("#{bindings.productCategories.inputValue}");
+        //String categoryId = (String)AdfmfJavaUtilities.getELValue("#{bindings.productCategories.inputValue}");
+        String categoryId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedCategoryId}");
         
         TraceLog.info(getClass(), "searchProducts", "categoryId: " + categoryId) ;
         
-        AdfmfJavaUtilities.setELValue("#{viewScope.selectedCategoryId}", categoryId);
+        //AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedCategoryId}", categoryId);
         
         AdfELContext elContext = AdfmfJavaUtilities.getAdfELContext();
-        MethodExpression methodExpression = AdfmfJavaUtilities.getMethodExpression("#{bindings.findProducts.execute}", Object.class, new Class[] {});
+        MethodExpression methodExpression = AdfmfJavaUtilities.getMethodExpression("#{bindings.executeFindProducts.execute}", Object.class, new Class[] {});
         methodExpression.invoke(elContext, new Object[] {});
         
         TraceLog.info(getClass(), "searchProducts", "END");

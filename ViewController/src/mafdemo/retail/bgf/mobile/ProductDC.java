@@ -17,10 +17,12 @@ public class ProductDC {
 
     private ProductRepository productRepository = new ProductRepository();
     
-    private Product[] products = new Product[0];
+    private Product[] products = null;
     
     public ProductDC() {
         super();
+        //products = new Product[0];
+        products = productRepository.findFavoriteProducts();
     }
     
     public ProductCategory[] getProductCategories() {

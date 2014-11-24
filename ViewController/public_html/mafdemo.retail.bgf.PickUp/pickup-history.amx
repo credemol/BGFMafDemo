@@ -7,11 +7,13 @@
       <amx:outputText value="#{viewcontrollerBundle.pickup_history_header}" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" action="__back" text="#{viewcontrollerBundle.pickup_common_back}"/>
+      <amx:commandButton id="cb1" action="goHome" text="#{viewcontrollerBundle.pickup_common_goHome}"/>
     </amx:facet>
+    <!--
     <amx:facet name="secondary">
       <amx:commandButton id="cb2" action="goHome" text="#{viewcontrollerBundle.pickup_common_goHome}"/>
     </amx:facet>
+    -->
     <amx:listView var="row" value="#{bindings.pickUpOrders.collectionModel}"
                   fetchSize="#{bindings.pickUpOrders.rangeSize}"
                   selectedRowKeys="#{bindings.pickUpOrders.collectionModel.selectedRow}"

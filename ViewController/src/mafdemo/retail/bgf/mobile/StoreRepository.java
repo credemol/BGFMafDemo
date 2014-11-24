@@ -253,4 +253,51 @@ public class StoreRepository {
 
     }
     
+    public Store[] findFavoriteStores() {
+        List list = new ArrayList();
+        
+        String sql = "SELECT S.ID, S.NAME, OLD_ADDRESS, NEW_ADDRESS, TEL_NO, SERVICE_01, SERVICE_02, SERVICE_03, " +
+                           "SERVICE_04, SERVICE_05, SERVICE_06, SERVICE_07, SERVICE_08 FROM STORE S " +
+                           "WHERE ID IN (SELECT DISTINCT(STORE_ID) FROM PICKUP_ORDER)";
+        
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            conn = DBConnectionFactory.getConnection();
+            stmt = conn.prepareStatement(sql);
+            
+            rs = stmt.executeQuery();
+            while(rs.next()) {
+                list.add(new Store(rs.getString("ID"), 
+                                   rs.getString("NAME"), 
+                                   rs.getString("TEL_NO"), 
+                                   rs.getString("OLD_ADDRESS"), 
+                                   rs.getString("NEW_ADDRESS"),
+                                   "Y".equals(rs.getString("SERVICE_01")),
+                                   "Y".equals(rs.getString("SERVICE_02")),
+                                   "Y".equals(rs.getString("SERVICE_03")),
+                                   "Y".equals(rs.getString("SERVICE_04")),
+                                   "Y".equals(rs.getString("SERVICE_05")),
+                                   "Y".equals(rs.getString("SERVICE_06")),
+                                   "Y".equals(rs.getString("SERVICE_07")),
+                                   "Y".equals(rs.getString("SERVICE_08"))));
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+            TraceLog.severe(getClass(), "findStores", e.getMessage());
+        } finally {
+            if(rs != null) {
+                try {
+                    rs.close();
+                } catch(Exception e) {};
+            } 
+            if(stmt != null) {
+                try {
+                    stmt.close();
+                } catch(Exception e) {};
+            }
+        }
+        return (Store[]) list.toArray(new Store[list.size()]);
+    }
 }

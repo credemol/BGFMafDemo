@@ -21,7 +21,8 @@ public class StoreDC {
         this.storeRepository = new StoreRepository();
         this.provinces = this.storeRepository.getProvinces();
         this.districts = new District[0];
-        this.stores = new Store[0];
+        //this.stores = new Store[0];
+        this.stores = storeRepository.findFavoriteStores();
     }
     
     public void executeFindDistricts(String provinceCode) {

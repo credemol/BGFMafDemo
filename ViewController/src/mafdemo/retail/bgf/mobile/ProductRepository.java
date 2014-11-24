@@ -75,6 +75,8 @@ public class ProductRepository {
             sql += " AND P.NAME LIKE ?";
         }
         
+        TraceLog.info(getClass(), "findProducts", "sql: " + sql) ;
+        
         Connection conn = null;    
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -110,7 +112,7 @@ public class ProductRepository {
                 } catch(Exception e) {}
             }
         }
-        
+        TraceLog.info(getClass(), "findProducts", list.size() + " products are found.");
         TraceLog.info(getClass(), "findProducts", "END");
         
         return (Product[]) list.toArray(new Product[list.size()]);
@@ -223,4 +225,49 @@ public class ProductRepository {
         return null;        
     }
 
+    public Product[] findFavoriteProducts() {
+        TraceLog.info(getClass(), "findFavoriteProducts", "START");
+        
+        String sql = "SELECT P.ID, P.NAME, P.IMAGE, P.PRICE, P.CATEGORY_ID FROM PRODUCT P WHERE ID IN (SELECT DISTINCT(PRODUCT_ID) FROM PICKUP_ORDER_ITEM)";
+
+        
+        TraceLog.info(getClass(), "findFavoriteProducts", "sql: " + sql) ;
+        
+        Connection conn = null;    
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List list = new ArrayList();
+        try {
+            conn = DBConnectionFactory.getConnection();
+            stmt = conn.prepareStatement(sql);
+
+            rs = stmt.executeQuery();
+            
+            while(rs.next()) {
+                Product product = new Product(rs.getString("ID"), rs.getString("CATEGORY_ID"), 
+                                        rs.getString("NAME"), rs.getInt("PRICE"), rs.getString("IMAGE"));  
+                list.add(product);
+                
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+            TraceLog.severe(getClass(), "findFavoriteProducts", e.getMessage());
+        } finally {
+            if(rs != null) {
+                try {
+                    rs.close();
+                } catch(Exception e) {}
+            }
+            if(stmt != null) {
+                try {
+                    stmt.close();
+                } catch(Exception e) {}
+            }
+        }
+        TraceLog.info(getClass(), "findFavoriteProducts", list.size() + " products are found.");
+        TraceLog.info(getClass(), "findFavoriteProducts", "END");
+        
+        return (Product[]) list.toArray(new Product[list.size()]);        
+    }
 }
