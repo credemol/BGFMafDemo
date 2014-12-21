@@ -6,6 +6,10 @@
         <source>Pickup</source>
         <target/>
       </trans-unit> 
+      <trans-unit id="pack_common_featureName">
+        <source>Pack</source>
+        <target/>
+      </trans-unit> 
       <trans-unit id="pickup_common_shoppingCart">
         <source>Cart</source>
         <target/>
@@ -34,6 +38,22 @@
         <source>Back</source>
         <target/>
       </trans-unit> 
+      <trans-unit id="pickup_common_done">
+        <source>Done</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pickup_common_refresh">
+        <source>Refresh</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pickup_common_logout">
+        <source>Logout</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pickup_common_sync">
+        <source>Sync</source>
+        <target/>
+      </trans-unit>        
       <trans-unit id="pickup_common_currencyWon">
         <source>Won</source>
         <target/>
@@ -226,6 +246,54 @@
         <source>oracle.jbo.format.DefaultNumberFormatter</source>
         <target/>
       </trans-unit>
+      <trans-unit id="pack_orderlist_header">
+        <source>Order List</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pack_orderlist_id">
+        <source>Order ID</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pack_orderlist_status">
+        <source>Status</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pack_orderlist_customerId">
+        <source>Customer ID</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pack_orderlist_customerName">
+        <source>Customer Name</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pack_orderlist_storeId">
+        <source>Store ID</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pack_orderlist_pickupDate">
+        <source>PickUp Date</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pack_orderlist_orderDate">
+        <source>Order Date</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pack_orderlist_totalPrice">
+        <source>Total Price</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pack_orderlist_storeName">
+        <source>Store Name</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pack_orderlist_oldAddress">
+        <source>Old Address</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pack_orderlist_newAddress">
+        <source>New Address</source>
+        <target/>
+      </trans-unit>        
     </body>
   </file>
 </xliff>

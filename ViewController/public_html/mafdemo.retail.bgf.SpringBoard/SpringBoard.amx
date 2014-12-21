@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1" styleClass="adfmf-panelPage-springboard">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:panelStretchLayout id="psl1">
+      <amx:facet name="top"/>
+      <amx:facet name="center">
+        <amx:listView var="row" value="#{bindings.features.collectionModel}" fetchSize="#{bindings.features.rangeSize}"
+                      selectedRowKeys="#{bindings.features.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.features.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                      bufferStrategy="viewport" id="lv1">
+          <amx:listItem id="li1" actionListener="#{bindings.gotoFeature.execute}">
+            <amx:tableLayout width="100%" id="tl1">
+              <amx:rowLayout id="rl1">
+                <amx:cellFormat width="40px" halign="center" id="cf2">
+                  <amx:image source="#{row.image}" id="i1" inlineStyle="width:25px; height:25px;"/>
+                </amx:cellFormat>
+                <amx:cellFormat width="100%" height="43px" id="cf1">
+                  <amx:outputText value="#{row.name}" id="ot2"/>
+                </amx:cellFormat>
+              </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:setPropertyListener id="spl1" from="#{row.id}" to="#{applicationScope.screenId}"/>
+            <amx:actionListener id="al1" binding="#{SpringboardBean.hideSpringboard}"/>
+          </amx:listItem>
+        </amx:listView>
+      </amx:facet>
+      <amx:facet name="bottom">
+        <amx:panelGroupLayout id="pgl1" layout="vertical" halign="center" valign="middle">
+          <amx:image id="i2" source="/images/oracleLogo.png" inlineStyle="width:176px;height:23px;margin-bottom:10px;"/>
+        </amx:panelGroupLayout>
+      </amx:facet>
+    </amx:panelStretchLayout>
+  </amx:panelPage>
+</amx:view>

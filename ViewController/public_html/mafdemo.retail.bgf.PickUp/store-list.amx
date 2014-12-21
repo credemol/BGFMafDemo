@@ -7,10 +7,19 @@
       <amx:outputText value="#{viewcontrollerBundle.pickup_store_header}" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton shortDesc="map" id="cb1"/>
+      <amx:commandButton actionListener="#{bindings.gotoSpringboard.execute}"
+                        icon="/images/springboard.png"
+                         disabled="#{!bindings.gotoSpringboard.enabled}" id="cb3"/>
+      <!--                   
+      <amx:commandButton id="cb1" icon="/images/springboard.png"
+                         actionListener="#{CustomSpringboardBean.showSpringboard}"/>
+      <amx:commandButton shortDesc="map" id="cb1" text="#{viewcontrollerBundle.pickup_common_logout}"
+                         actionListener="#{AuthBean.logout}"/>
+                         -->
     </amx:facet>
     <amx:facet name="secondary">
-      <amx:commandButton id="cb2" action="viewHistory" text="#{viewcontrollerBundle.pickup_common_pickupHistory}"/>
+      <amx:commandButton id="cb2" action="viewHistory" text="#{viewcontrollerBundle.pickup_common_pickupHistory}"
+                         actionListener="#{pageFlowScope.PickUpHistoryBean.executeRefreshPickUpHistory}"/>
     </amx:facet>
     <amx:panelFormLayout id="pfl1">
       <amx:selectOneChoice value="#{pageFlowScope.selectedProvinceCode}"

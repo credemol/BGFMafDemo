@@ -6,6 +6,10 @@
         <source>픽업</source>
         <target/>
       </trans-unit> 
+      <trans-unit id="pack_common_featureName">
+        <source>Pack</source>
+        <target/>
+      </trans-unit> 
       <trans-unit id="pickup_common_shoppingCart">
         <source>장바구니</source>
         <target/>
@@ -32,6 +36,22 @@
       </trans-unit>       
       <trans-unit id="pickup_common_back">
         <source>뒤로</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pickup_common_done">
+        <source>완료</source>
+        <target/>
+      </trans-unit>   
+      <trans-unit id="pickup_common_refresh">
+        <source>새로고침</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pickup_common_logout">
+        <source>로그아웃</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pickup_common_sync">
+        <source>Sync</source>
         <target/>
       </trans-unit>       
       <trans-unit id="pickup_common_currencyWon">
@@ -218,6 +238,54 @@
         <source>oracle.jbo.format.DefaultNumberFormatter</source>
         <target/>
       </trans-unit>      
+      <trans-unit id="pack_orderlist_header">
+        <source>주문 목록</source>
+        <target/>
+      </trans-unit>      
+      <trans-unit id="pack_orderlist_id">
+        <source>주문 ID</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pack_orderlist_status">
+        <source>상태</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pack_orderlist_customerId">
+        <source>고객 ID</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pack_orderlist_customerName">
+        <source>고객 명</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="pack_orderlist_storeId">
+        <source>점포 ID</source>
+        <target/>
+      </trans-unit>     
+      <trans-unit id="pack_orderlist_pickupDate">
+        <source>픽업 일시</source>
+        <target/>
+      </trans-unit>  
+      <trans-unit id="pack_orderlist_orderDate">
+        <source>주문 일시</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pack_orderlist_totalPrice">
+        <source>총 금액</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pack_orderlist_storeName">
+        <source>점포명</source>
+        <target/>
+      </trans-unit>       
+      <trans-unit id="pack_orderlist_oldAddress">
+        <source>구 주소</source>
+        <target/>
+      </trans-unit>        
+      <trans-unit id="pack_orderlist_newAddress">
+        <source>신 주소</source>
+        <target/>
+      </trans-unit>           
     </body>
   </file>
 </xliff>

@@ -5,6 +5,8 @@ import java.util.List;
 
 import java.util.Map;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -22,7 +24,7 @@ public class ProductDC {
     public ProductDC() {
         super();
         //products = new Product[0];
-        products = productRepository.findFavoriteProducts();
+        products = productRepository.findFavoriteProducts((String) AdfmfJavaUtilities.getELValue("#{securityContext.userName}"));
     }
     
     public ProductCategory[] getProductCategories() {
@@ -38,6 +40,14 @@ public class ProductDC {
         }
     }
     
+    
+    public void initProducts() {
+        
+        products = productRepository.findFavoriteProducts((String) AdfmfJavaUtilities.getELValue("#{securityContext.userName}"));
+        this.providerChangeSupport.fireProviderRefresh("products");
+        
+        
+    }
     
     
     public void executeFindProducts(String categoryId, String productName) {
@@ -56,7 +66,7 @@ public class ProductDC {
             }
         }
         this.providerChangeSupport.fireProviderRefresh("products");
-        
+
         TraceLog.info(getClass(), "executeFindProducts", "END");   
     }
     
@@ -65,7 +75,7 @@ public class ProductDC {
         TraceLog.info(getClass(), "updateProduct", "START - product: " + product);
         
         this.providerChangeSupport.fireProviderChange("products", product.getId(), product);
-        
+
         TraceLog.info(getClass(), "updateProduct", "END");
     }
     
@@ -73,7 +83,7 @@ public class ProductDC {
         TraceLog.info(getClass(), "updateQuantity", "START productId: " + productId + ", quantity: " + quantity);
         
         Product newProduct = productRepository.findProduct(productId);
-        
+
         TraceLog.info(getClass(), "updateQuantity", "newProduct: " + newProduct);
         
         if(newProduct == null) {
@@ -82,15 +92,15 @@ public class ProductDC {
         newProduct.setQuantity(quantity);
         
         this.providerChangeSupport.fireProviderChange("products", productId, newProduct);
-        
+
         TraceLog.info(getClass(), "updateQuantity", "END");
     }
     public void refreshProducts() {
         TraceLog.info(getClass(), "refreshProducts", "START"); 
         
         this.providerChangeSupport.fireProviderRefresh("products");
-        
-        
+
+
         TraceLog.info(getClass(), "refreshProducts", "END"); 
     }
     

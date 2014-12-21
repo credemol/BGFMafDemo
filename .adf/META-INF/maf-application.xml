@@ -2,8 +2,8 @@
 <adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
                    version="1.0" name="#{appBundle.retaildemo_appName}" id="com.archnal.mobile.BGFMafDemo"
                    appControllerFolder="ApplicationController"
-                   listener-class="mafdemo.retail.bgf.application.LifeCycleListenerImpl">
-  <adfmf:loadBundle basename="BGFMafDemoBundle" var="appBundle"/>
+                   listener-class="mafdemo.retail.bgf.application.LifeCycleListenerImpl" urlScheme="bgfmafdemo">
+  <adfmf:loadBundle basename="ApplicationBundle" var="appBundle"/>
   <adfmf:deviceFeatureAccess>
     <adfmf:deviceNetwork access="true" id="dn1"/>
     <adfmf:deviceCamera access="true" id="dc1"/>
@@ -15,8 +15,21 @@
     <adfmf:devicePushNotifications access="true" id="dpn1"/>
     <adfmf:deviceSMS access="true" id="dsms1"/>
   </adfmf:deviceFeatureAccess>
-  <adfmf:featureReference id="mafdemo.retail.bgf.CU"/>
-  <adfmf:featureReference id="mafdemo.retail.bgf.PickUp"/>
+  <adfmf:featureReference id="mafdemo.retail.bgf.CU" loginConnRefId="bgf_secure"/>
+  <adfmf:featureReference id="mafdemo.retail.bgf.PickUp" loginConnRefId="bgf_secure"/>
+  <adfmf:featureReference id="mafdemo.retail.bgf.Pack" loginConnRefId="bgf_secure"/>
+  <adfmf:featureReference id="mafdemo.retail.bgf.SpringBoard" showOnNavigationBar="false" showOnSpringboard="false"/>
+  <adfmf:featureReference id="mafdemo.retail.bgf.Logout" loginConnRefId="bgf_secure"/>
+  <adfmf:navigation>
+    <adfmf:springboard enabled="true" showSpringboardAtStartup="false" displayGotoSpringboardControl="true"
+                       width="200" animation="slideright">
+      <adfmf:springboardFeatureReference id="mafdemo.retail.bgf.SpringBoard"/>
+    </adfmf:springboard>
+    <adfmf:navigationBar enabled="false"/>
+  </adfmf:navigation>
+  <adfmf:login defaultConnRefId="bgf_secure">
+    <adfmf:localHTML url="bgf_login.html"/>
+  </adfmf:login>
   <adfmf:remoteURLWhiteList>
     <adfmf:domain id="d1">cu.bgfretail.com</adfmf:domain>
     <adfmf:domain id="d2">cdn2.bgfretail.com</adfmf:domain>

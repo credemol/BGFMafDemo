@@ -19,6 +19,10 @@ public class PickUpHistoryDC {
         pickUpOrders = pickUpHistoryRepository.getPickUpOrders(true);
     }
 
+    public void refreshPickUpHistory() {
+        pickUpOrders = pickUpHistoryRepository.getPickUpOrders(true);
+        providerChangeSupport.fireProviderRefresh("pickUpOrders");
+    }
 
     public void setPickUpOrders(PickUpOrder[] pickUpOrders) {
         PickUpOrder[] oldPickUpOrders = this.pickUpOrders;

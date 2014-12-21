@@ -14,6 +14,13 @@
           usageId="mafdemo_retail_bgf_mobile_pickup_historyPageDef"/>
     <page path="/mafdemo.retail.bgf.PickUp/history-detail.amx"
           usageId="mafdemo_retail_bgf_mobile_history_detailPageDef"/>
+    <page path="/mafdemo.retail.bgf.PickUp/store-owner-home.amx"
+          usageId="mafdemo_retail_bgf_mobile_store_owner_homePageDef"/>
+    <page path="/mafdemo.retail.bgf.Pack/order-list.amx" usageId="mafdemo_retail_bgf_mobile_order_listPageDef"/>
+    <page path="/mafdemo.retail.bgf.SpringBoard/SpringBoard.amx"
+          usageId="mafdemo_retail_bgf_mobile_SpringBoardPageDef"/>
+    <page path="/mafdemo.retail.bgf.SpringBoard/CustomSpringboard.amx"
+          usageId="mafdemo_retail_bgf_mobile_CustomSpringboardPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="mafdemo_retail_bgf_mobile_customer_indexPageDef" path="mafdemo.retail.bgf.Shop.customer_indexPageDef"/>
@@ -26,8 +33,17 @@
     <page id="mafdemo_retail_bgf_mobile_pickup_cartPageDef" path="mafdemo.retail.bgf.PickUp.pickup_cartPageDef"/>
     <page id="mafdemo_retail_bgf_mobile_pickup_historyPageDef" path="mafdemo.retail.bgf.PickUp.pickup_historyPageDef"/>
     <page id="mafdemo_retail_bgf_mobile_history_detailPageDef" path="mafdemo.retail.bgf.PickUp.history_detailPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_store_owner_homePageDef"
+          path="mafdemo.retail.bgf.PickUp.store_owner_homePageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_order_listPageDef" path="mafdemo.retail.bgf.Pack.order_listPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_SpringBoardPageDef" path="mafdemo.retail.bgf.SpringBoard.SpringBoardPageDef"/>
+    <page id="mafdemo_retail_bgf_mobile_CustomSpringboardPageDef"
+          path="mafdemo.retail.bgf.SpringBoard.CustomSpringboardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="ApplicationFeatures" path="mafdemo.retail.bgf.application.ApplicationFeatures"/>
+    <dc id="SpringboardDC" path="mafdemo.retail.bgf.mobile.SpringboardDC"/>
+    <dc id="PickUpOrderDC" path="mafdemo.retail.bgf.mobile.PickUpOrderDC"/>
     <dc id="PickUpHistoryDC" path="mafdemo.retail.bgf.mobile.PickUpHistoryDC"/>
     <dc id="StoreDC" path="mafdemo.retail.bgf.mobile.StoreDC"/>
     <dc id="ShoppingCartDC" path="mafdemo.retail.bgf.mobile.ShoppingCartDC"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="PickUpCustomer-task-flow">
-    <default-activity>store-list</default-activity>
+    <default-activity>notificationDecision</default-activity>
     <managed-bean id="__5">
       <managed-bean-name>PickUpStoreBean</managed-bean-name>
       <managed-bean-class>mafdemo.retail.bgf.mobile.PickUpStoreBean</managed-bean-class>
@@ -26,6 +26,16 @@
       <managed-bean-name>StoreLocationBean</managed-bean-name>
       <managed-bean-class>mafdemo.retail.bgf.mobile.StoreLocationBean</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__16">
+      <managed-bean-name>PickUpHistoryDetailBean</managed-bean-name>
+      <managed-bean-class>mafdemo.retail.bgf.mobile.PickUpHistoryDetailBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__31">
+      <managed-bean-name>CustomSpringboardBean</managed-bean-name>
+      <managed-bean-class>mafdemo.retail.bgf.mobile.CustomSpringboardBean</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
     <view id="store-list">
       <page>/mafdemo.retail.bgf.PickUp/store-list.amx</page>
@@ -62,6 +72,19 @@
     <view id="store-location">
       <page>/mafdemo.retail.bgf.PickUp/store-location.amx</page>
     </view>
+    <router id="notificationDecision">
+      <case id="__37">
+        <expression>#{applicationScope.notified}</expression>
+        <outcome>updateOrderStatus</outcome>
+      </case>
+      <default-outcome>goStoreList</default-outcome>
+    </router>
+    <method-call id="updateOrderStatus">
+      <method>#{pageFlowScope.PickUpHistoryBean.updateOrderStatus}</method>
+      <outcome>
+        <fixed-outcome>viewHistory</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__1">
       <from-activity-id>store-list</from-activity-id>
       <control-flow-case id="__2">
@@ -141,6 +164,24 @@
       <control-flow-case id="__29">
         <from-outcome>viewLocation</from-outcome>
         <to-activity-id>store-location</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id>notificationDecision</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome>goStoreList</from-outcome>
+        <to-activity-id>store-list</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome>updateOrderStatus</from-outcome>
+        <to-activity-id>updateOrderStatus</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__39">
+      <from-activity-id>updateOrderStatus</from-activity-id>
+      <control-flow-case id="__40">
+        <from-outcome>viewHistory</from-outcome>
+        <to-activity-id>pickup-history</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

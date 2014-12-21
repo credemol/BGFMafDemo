@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="PushInfo-task-flow">
+    <default-activity>push-info</default-activity>
+    <view id="push-info">
+      <page>/mafdemo.retail.bgf.PushInfo/push-info.amx</page>
+    </view>
+  </task-flow-definition>
+</adfc-mobile-config>

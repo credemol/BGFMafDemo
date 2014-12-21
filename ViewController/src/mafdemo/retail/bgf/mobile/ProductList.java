@@ -15,6 +15,8 @@ import java.util.List;
 
 import mafdemo.retail.bgf.application.DBConnectionFactory;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
@@ -81,7 +83,7 @@ public class ProductList {
                 } catch(Exception e) {}
             }
         }
-        
+
         TraceLog.info(getClass(), "getProductCategories", "Completed successfully");
         return (ProductCategory[]) list.toArray(new ProductCategory[list.size()]);
     }

@@ -9,6 +9,9 @@
                       DataControl="ShoppingCartDC" BeanClass="mafdemo.retail.bgf.mobile.Product"
                       id="selectedProductsIterator"/>
     <iterator Binds="root" RangeSize="25" DataControl="ProductDC" id="ProductDCIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="StoreDC" id="StoreDCIterator"/>
+    <accessorIterator MasterBinding="StoreDCIterator" Binds="stores" RangeSize="25" DataControl="StoreDC"
+                      BeanClass="mafdemo.retail.bgf.mobile.Store" id="storesIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="selectedProductsIterator" id="selectedProducts">
@@ -42,5 +45,12 @@
         <Item Value="totalPrice"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="initStores" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initStores"
+                  IsViewObjectMethod="false" DataControl="StoreDC" InstanceName="data.StoreDC.dataProvider"/>
+    <methodAction id="initProducts" RequiresUpdateModel="true" Action="invokeMethod" MethodName="initProducts"
+                  IsViewObjectMethod="false" DataControl="ProductDC" InstanceName="data.ProductDC.dataProvider"/>
+    <methodAction id="refreshPickUpHistory" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="refreshPickUpHistory" IsViewObjectMethod="false" DataControl="PickUpHistoryDC"
+                  InstanceName="data.PickUpHistoryDC.dataProvider"/>
   </bindings>
 </pageDefinition>

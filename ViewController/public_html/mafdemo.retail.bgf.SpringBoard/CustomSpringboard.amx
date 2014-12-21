@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle" id="lb1"/>
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Springboard" id="ot1"/>
+    </amx:facet>
+    <amx:tableLayout id="tl1">
+      <amx:rowLayout id="rl1">
+        <amx:cellFormat id="cf1">
+          <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start">
+            <amx:image id="i1" source="/images/home.png"
+                       inlineStyle="width:25px; height:25px; margin-top:4px; margin-left:4px;"/>
+            <amx:commandLink text="CU" id="cl1" actionListener="#{bindings.gotoFeature.execute}"
+                             inlineStyle="margin-left:10px; text-decoration: none;">
+              <amx:setPropertyListener id="spl1" from="#{'mafdemo.retail.bgf.CU'}"
+                                       to="#{applicationScope.springboardFeatureId}"/>
+            </amx:commandLink>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl2" rendered="#{applicationScope.isCustomerRole}">
+        <amx:cellFormat id="cf2">
+          <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="start">
+            <amx:image id="i2" source="/images/cart.png"
+                       inlineStyle="width:25px; height:25px; margin-top:4px; margin-left:4px;"/>
+            <amx:commandLink text="#{viewcontrollerBundle.pickup_common_featureName}" id="cl2" actionListener="#{bindings.gotoFeature.execute}"
+                             inlineStyle="margin-left:10px; text-decoration: none;">
+              <amx:setPropertyListener id="spl2" to="#{applicationScope.springboardFeatureId}"
+                                       from="#{'mafdemo.retail.bgf.PickUp'}"/>
+            </amx:commandLink>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl3" rendered="#{applicationScope.isStoreOwnerRole}">
+        <amx:cellFormat id="cf3">
+          <amx:panelGroupLayout id="pgl3" layout="horizontal" halign="start">
+            <amx:image id="i3" inlineStyle="width:25px; height:25px; margin-top:4px; margin-left:4px;" source="/images/pack.png"/>
+            <amx:commandLink text="#{viewcontrollerBundle.pack_common_featureName}" id="cl3" actionListener="#{bindings.gotoFeature.execute}"
+                             inlineStyle="margin-left:10px; text-decoration: none;">
+              <amx:setPropertyListener id="spl3" to="#{applicationScope.springboardFeatureId}"
+                                       from="#{'mafdemo.retail.bgf.Pack'}"/>
+            </amx:commandLink>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl4" rendered="#{applicationScope.authenticated}">
+        <amx:cellFormat id="cf4">
+          <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start">
+            <amx:image id="i4" source="/images/logout.png"
+                       inlineStyle="width:25px; height:25px; margin-top:4px; margin-left:4px;"/>
+            <amx:commandLink text="#{viewcontrollerBundle.pickup_common_logout}" id="cl4" actionListener="#{AuthBean.logout}"
+                             inlineStyle="margin-left:10px; text-decoration: none;"/>
+          </amx:panelGroupLayout>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+  </amx:panelPage>
+</amx:view>

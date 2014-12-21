@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
   <adfmf:loadBundle basename="mafdemo.retail.bgf.mobile.ViewControllerBundle" var="viewcontrollerBundle"/>
-  <adfmf:feature id="mafdemo.retail.bgf.CU" name="CU">
+  <adfmf:feature id="mafdemo.retail.bgf.CU" name="CU" securityEnabled="true"
+                 listener-class="mafdemo.retail.bgf.mobile.DefaultFeatureLifeCycleListener" icon="images/home.png"
+                 image="images/home.png">
     <adfmf:content id="mafdemo.retail.bgf.CU.1" icon="images/cu_logo.png" image="images/cu_logo.png">
       <adfmf:constraints/>
-      <adfmf:remoteURL connection="cu_url_connection"/>
+      <adfmf:remoteURL connection="cu_url_connection" showNavButtons="true"/>
     </adfmf:content>
   </adfmf:feature>
-  <adfmf:feature id="mafdemo.retail.bgf.PickUp" name="#{viewcontrollerBundle.pickup_common_featureName}">
+  <adfmf:feature id="mafdemo.retail.bgf.PickUp" name="#{viewcontrollerBundle.pickup_common_featureName}"
+                 securityEnabled="true" icon="images/cart.png" image="images/cart.png">
+    <adfmf:constraints>
+      <adfmf:constraint property="user.roles" operator="contains" value="bgf_customer" id="c2"/>
+    </adfmf:constraints>
     <adfmf:content id="mafdemo.retail.bgf.PickUp.1">
+      <adfmf:constraints/>
       <adfmf:amx file="mafdemo.retail.bgf.PickUp/PickUpCustomer-task-flow.xml#PickUpCustomer-task-flow"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="mafdemo.retail.bgf.Pack" name="#{viewcontrollerBundle.pack_common_featureName}"
+                 securityEnabled="true" icon="images/pack.png" image="images/pack.png">
+    <adfmf:constraints>
+      <adfmf:constraint property="user.roles" operator="contains" value="bgf_store_owner" id="c3"/>
+    </adfmf:constraints>
+    <adfmf:content id="mafdemo.retail.bgf.Pack.1">
+      <adfmf:amx file="mafdemo.retail.bgf.Pack/Pack-task-flow.xml#Pack-task-flow"/>
+    </adfmf:content>
+    <adfmf:preferences>
+      <adfmf:preferenceGroup id="prefGroupPack" label="#{viewcontrollerBundle.pack_common_featureName}">
+        <adfmf:preferenceText id="prefStoreId" label="#{viewcontrollerBundle.pack_orderlist_storeId}" default="2868"/>
+      </adfmf:preferenceGroup>
+    </adfmf:preferences>
+  </adfmf:feature>
+  <adfmf:feature id="mafdemo.retail.bgf.SpringBoard" name="SpringBoard">
+    <adfmf:content id="mafdemo.retail.bgf.SpringBoard.2">
+      <adfmf:amx file="mafdemo.retail.bgf.SpringBoard/CustomSpringboard.amx"/>
+    </adfmf:content>
+    <adfmf:content id="mafdemo.retail.bgf.SpringBoard.1">
+      <adfmf:constraints>
+        <adfmf:constraint property="device.name" operator="equal" value="ygkim" id="c1"/>
+      </adfmf:constraints>
+      <adfmf:amx file="mafdemo.retail.bgf.SpringBoard/SpringBoard.amx">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/js/jquery-2.0.0.js" id="i2"/>
+          <adfmf:include type="JavaScript" file="resources/js/springboard.js" id="i1"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="mafdemo.retail.bgf.Logout" name="Logout" securityEnabled="true"
+                 listener-class="mafdemo.retail.bgf.mobile.LogoutFeatureLifeCycleListener">
+    <adfmf:content id="mafdemo.retail.bgf.Logout.1">
+      <adfmf:amx file="mafdemo.retail.bgf.Logout/logout.amx"/>
     </adfmf:content>
   </adfmf:feature>
 </adfmf:features>

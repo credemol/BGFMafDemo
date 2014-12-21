@@ -13,7 +13,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import oracle.adfmf.application.LifeCycleListener;
+import oracle.adfmf.application.PushNotificationConfig;
+
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.framework.event.EventSource;
+import oracle.adfmf.framework.event.EventSourceFactory;
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
@@ -55,7 +60,9 @@ import oracle.adfmf.util.logging.Trace;
  *
  * @see oracle.adfmf.application.LifeCycleListener
  */
-public class LifeCycleListenerImpl implements LifeCycleListener {
+public class LifeCycleListenerImpl implements LifeCycleListener, PushNotificationConfig {
+    private boolean deviceTokenRegistered = false;
+    
     public LifeCycleListenerImpl() {
     }
 
@@ -76,6 +83,12 @@ public class LifeCycleListenerImpl implements LifeCycleListener {
 
         Trace.log(Utility.ApplicationLogger, Level.INFO, LifeCycleListenerImpl.class, "start",
                   "##############App Start");
+        
+        EventSource eventSource = 
+            EventSourceFactory.getEventSource(EventSourceFactory.NATIVE_PUSH_NOTIFICATION_REMOTE_EVENT_SOURCE_NAME);
+        
+        eventSource.addListener(new NativePushNotificationListener());
+        
 
         File dbFile = new File(DBConnectionFactory.DB_FILE);
         Trace.log(Utility.ApplicationLogger, Level.INFO, LifeCycleListenerImpl.class, "start",
@@ -85,6 +98,9 @@ public class LifeCycleListenerImpl implements LifeCycleListener {
             copyDB();
         }
        
+       
+        AdfmfJavaUtilities.setELValue("#{applicationScope.storeId}", "2868");
+        
         Trace.log(Utility.ApplicationLogger, Level.INFO, LifeCycleListenerImpl.class, "start",
                   "##############App Start Complete");
 
@@ -126,6 +142,14 @@ public class LifeCycleListenerImpl implements LifeCycleListener {
             Trace.log(Utility.ApplicationLogger, Level.SEVERE, LifeCycleListenerImpl.class, "copyDB",
                       "##############Exception:  " + e.getMessage());
         }
+        
+        // see DefaultFeatureLifeCycleListener.
+        /*
+        if(this.deviceTokenRegistered == false) {
+            deviceTokenRegistered = new RestBean().registerDeviceToken();
+            TraceLog.info(getClass(), "start", "registered: " + deviceTokenRegistered) ;
+        }
+        */
     }
 
     /**
@@ -164,6 +188,19 @@ public class LifeCycleListenerImpl implements LifeCycleListener {
      */
     public void activate() {
         // Add code here...
+        TraceLog.info(getClass(), "activate", "START");
+        
+        // see DefaultFeatureLifeCycleListener.
+        /*
+        if(this.deviceTokenRegistered == false) {
+            deviceTokenRegistered = new RestBean().registerDeviceToken();
+            TraceLog.info(getClass(), "activate", "registered: " + deviceTokenRegistered) ;
+        }
+        */
+
+        TraceLog.info(getClass(), "activate", "END");
+        //
+        //AdfmfContainerUtilities.resetFeature("mafdemo.retail.bgf.SpringBoard");
     }
 
     /**
@@ -189,4 +226,19 @@ public class LifeCycleListenerImpl implements LifeCycleListener {
     public void deactivate() {
         // Add code here...
     }
+    
+    public String getSourceAuthorizationId() {
+        TraceLog.info(getClass(), "getSourceAuthorizationId", "START");
+        String projectNumber = "399685223813";
+        
+        AdfmfJavaUtilities.setELValue("#{applicationScope.applicationId}", projectNumber);
+        
+        TraceLog.info(getClass(), "getSourceAuthorizationId", "END");
+        
+        return projectNumber;
+    }
+
+      public long getNotificationStyle() {
+          return 0L;
+      }    
 }

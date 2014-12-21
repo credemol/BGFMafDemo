@@ -1,5 +1,6 @@
 package mafdemo.retail.bgf.mobile;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
@@ -22,7 +23,17 @@ public class StoreDC {
         this.provinces = this.storeRepository.getProvinces();
         this.districts = new District[0];
         //this.stores = new Store[0];
-        this.stores = storeRepository.findFavoriteStores();
+        this.stores = storeRepository.findFavoriteStores((String) AdfmfJavaUtilities.getELValue("#{securityContext.userName}"));
+    }
+    
+    public void initStores() {
+        this.provinces = this.storeRepository.getProvinces();
+        this.districts = new District[0];
+        //this.stores = new Store[0];
+        this.stores = storeRepository.findFavoriteStores((String) AdfmfJavaUtilities.getELValue("#{securityContext.userName}"));
+        
+        this.providerChangeSupport.fireProviderRefresh("districts");
+        this.providerChangeSupport.fireProviderRefresh("stores");
     }
     
     public void executeFindDistricts(String provinceCode) {

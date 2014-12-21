@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="StoreOwner-task-flow">
+    <default-activity>store-owner-home</default-activity>
+    <managed-bean id="__1">
+      <managed-bean-name>PickUpOrderBean</managed-bean-name>
+      <managed-bean-class>mafdemo.retail.bgf.mobile.PickUpOrderBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="store-owner-home">
+      <page>/mafdemo.retail.bgf.PickUp/store-owner-home.amx</page>
+    </view>
+  </task-flow-definition>
+</adfc-mobile-config>

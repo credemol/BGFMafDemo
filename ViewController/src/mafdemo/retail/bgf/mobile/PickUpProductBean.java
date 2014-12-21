@@ -7,6 +7,8 @@ import javax.el.MethodExpression;
 
 import javax.el.ValueExpression;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.bindings.dbf.AmxAccessorIteratorBinding;
@@ -35,7 +37,7 @@ public class PickUpProductBean {
         TraceLog.info(getClass(), "selectCategory", "START");
         
         String categoryId = (String)AdfmfJavaUtilities.getELValue("#{bindings.productCategories.inputValue}");
-        
+
         TraceLog.info(getClass(), "selectCategory", "categoryId: " + categoryId) ;
         
         AdfmfJavaUtilities.setELValue("#{viewScope.selectedCategoryId}", categoryId);
@@ -43,17 +45,17 @@ public class PickUpProductBean {
         AdfELContext elContext = AdfmfJavaUtilities.getAdfELContext();
         MethodExpression methodExpression = AdfmfJavaUtilities.getMethodExpression("#{bindings.findProducts.execute}", Object.class, new Class[] {});
         methodExpression.invoke(elContext, new Object[] {});
-        
+
         TraceLog.info(getClass(), "selectCategory", "END");
     }
 
     public void selectCategory(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
-        
+
         TraceLog.info(getClass(), "selectCategory", "START");
         
         this.searchProducts();
-        
+
         TraceLog.info(getClass(), "selectCategory", "END");
     }
 
@@ -61,7 +63,7 @@ public class PickUpProductBean {
         TraceLog.info(getClass(), "setQuantity", "START");
         
         Object row = AdfmfJavaUtilities.getELValue("#{bindings.productsIterator.currentRow}");
-        
+
         TraceLog.info(getClass(), "setQuantity", "row: " + row);
         
         if(row != null) {
@@ -72,7 +74,7 @@ public class PickUpProductBean {
             
             String productId = (String) beanObject.getAttribute("id");
             Integer quantity = (Integer) beanObject.getAttribute("quantity");
-            
+
             TraceLog.info(getClass(), "setQuantity", "id: " + productId + ", quantity: " + quantity);
             
             Map quantityMap = (Map) AdfmfJavaUtilities.getELValue("#{pageFlowScope.ShoppingCartBean.quantityMap}");
@@ -107,7 +109,7 @@ public class PickUpProductBean {
         
         //String categoryId = (String)AdfmfJavaUtilities.getELValue("#{bindings.productCategories.inputValue}");
         String categoryId = (String)AdfmfJavaUtilities.getELValue("#{pageFlowScope.selectedCategoryId}");
-        
+
         TraceLog.info(getClass(), "searchProducts", "categoryId: " + categoryId) ;
         
         //AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedCategoryId}", categoryId);
@@ -115,7 +117,7 @@ public class PickUpProductBean {
         AdfELContext elContext = AdfmfJavaUtilities.getAdfELContext();
         MethodExpression methodExpression = AdfmfJavaUtilities.getMethodExpression("#{bindings.executeFindProducts.execute}", Object.class, new Class[] {});
         methodExpression.invoke(elContext, new Object[] {});
-        
+
         TraceLog.info(getClass(), "searchProducts", "END");
     }
     

@@ -200,6 +200,7 @@
       <amx:commandButton actionListener="#{bindings.discard.execute}" text="#{viewcontrollerBundle.pickup_cart_discard}"
                          disabled="#{bindings.totalPrice.inputValue == 0}" id="cb4" action="discard"/>
                          -->
+
     </amx:panelGroupLayout>
   </amx:panelPage>
 </amx:view>

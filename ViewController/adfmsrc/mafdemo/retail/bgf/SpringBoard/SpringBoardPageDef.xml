@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="SpringBoardPageDef"
+                Package="mafdemo.retail.bgf.SpringBoard">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SpringboardDC" id="SpringboardDCIterator"/>
+    <accessorIterator MasterBinding="SpringboardDCIterator" Binds="features" RangeSize="25" DataControl="SpringboardDC"
+                      BeanClass="oracle.adfmf.framework.FeatureInformation" id="featuresIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="featuresIterator" id="features">
+      <nodeDefinition DefName="oracle.adfmf.framework.FeatureInformation" Name="features0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="image"/>
+          <Item Value="id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="gotoFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoFeature"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider">
+      <NamedData NDName="featureId" NDValue="#{applicationScope.screenId}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="reloadFeatures" RequiresUpdateModel="true" Action="invokeMethod" MethodName="reloadFeatures"
+                  IsViewObjectMethod="false" DataControl="SpringboardDC"
+                  InstanceName="data.SpringboardDC.dataProvider"/>
+  </bindings>
+</pageDefinition>

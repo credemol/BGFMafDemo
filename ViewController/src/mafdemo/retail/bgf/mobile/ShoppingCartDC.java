@@ -4,6 +4,8 @@ import java.util.Map;
 
 import java.util.Set;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -60,7 +62,7 @@ public class ShoppingCartDC {
         TraceLog.info(getClass(), "calculateTotalPrice", "price: " + price);
         
         this.setTotalPrice(price);
-        
+
         TraceLog.info(getClass(), "calculateTotalPrice", "END");
     }
 
@@ -71,7 +73,7 @@ public class ShoppingCartDC {
     
     public void discard() {
         TraceLog.info(getClass(), "discard", "START");
-        
+
         TraceLog.info(getClass(), "discard", "END");
     }
 

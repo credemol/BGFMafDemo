@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" text="Logout" actionListener="#{AuthBean.logout}"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" actionListener="#{pageFlowScope.PickUpOrderBean.syncOrderList}" text="Sync"/>
+    </amx:facet>
+    <amx:panelSplitter id="ps1">
+      <amx:facet name="navigator">
+        <amx:outputText value="Order List" id="ot3"/>
+        <amx:listView var="row" value="#{bindings.pickUpOrders.collectionModel}"
+                      fetchSize="#{bindings.pickUpOrders.rangeSize}"
+                      selectedRowKeys="#{bindings.pickUpOrders.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.pickUpOrders.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+          <amx:listItem id="li1">
+            <amx:outputText value="#{row.customerId}" id="ot2"/>
+          </amx:listItem>
+        </amx:listView>
+      </amx:facet>
+      <amx:panelItem id="pi1">
+        <amx:panelFormLayout id="pfl1">
+          <amx:inputText value="#{bindings.id.inputValue}" label="#{bindings.id.hints.label}" id="it8"/>
+          <amx:inputText value="#{bindings.key.inputValue}" label="#{bindings.key.hints.label}" id="it9"/>
+          <amx:inputText value="#{bindings.status.inputValue}" label="#{bindings.status.hints.label}" id="it3"/>
+          <amx:inputText value="#{bindings.customerId.inputValue}" label="#{bindings.customerId.hints.label}" id="it1"/>
+          <amx:inputText value="#{bindings.storeId.inputValue}" label="#{bindings.storeId.hints.label}" id="it6"/>
+          <amx:inputDate value="#{bindings.pickupDate.inputValue}" label="#{bindings.pickupDate.hints.label}" id="id2"/>
+          <amx:inputDate value="#{bindings.orderDate.inputValue}" label="#{bindings.orderDate.hints.label}" id="id1"/>
+          <amx:inputText value="#{bindings.totalPrice.inputValue}" label="#{bindings.totalPrice.hints.label}" id="it7"/>
+          <amx:inputText value="#{bindings.storeName.inputValue}" label="#{bindings.storeName.hints.label}" id="it4"/>
+          <amx:inputText value="#{bindings.storeNewAddress.inputValue}"
+                         label="#{bindings.storeNewAddress.hints.label}" id="it5"/>
+          <amx:inputText value="#{bindings.storeOldAddress.inputValue}"
+                         label="#{bindings.storeOldAddress.hints.label}" id="it2"/>
+        </amx:panelFormLayout>
+      </amx:panelItem>
+    </amx:panelSplitter>
+  </amx:panelPage>
+</amx:view>

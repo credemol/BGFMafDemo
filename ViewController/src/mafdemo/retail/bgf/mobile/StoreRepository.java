@@ -12,6 +12,8 @@ import java.util.List;
 
 import mafdemo.retail.bgf.application.DBConnectionFactory;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
@@ -159,7 +161,7 @@ public class StoreRepository {
                            "WHERE PD.PROVINCE_CODE = ? AND PD.DISTRICT_CODE = ? AND PD.ID = S.PROVINCE_DISTRICT_ID ";
         
         sql += buildWhereClause(storeName, service01, service02, service03, service04, service05, service06, service07, service08);
-        
+
         TraceLog.info(getClass(), "getStores", "sql: " + sql);
         
         //TraceLog.info(getClass(), "getStores", "provinceIndex: " + provinceIndex);
@@ -253,12 +255,13 @@ public class StoreRepository {
 
     }
     
-    public Store[] findFavoriteStores() {
+    public Store[] findFavoriteStores(String customerId) {
+        TraceLog.info(getClass(), "findFavoriteStores", "START - customerId: " + customerId);
         List list = new ArrayList();
         
         String sql = "SELECT S.ID, S.NAME, OLD_ADDRESS, NEW_ADDRESS, TEL_NO, SERVICE_01, SERVICE_02, SERVICE_03, " +
                            "SERVICE_04, SERVICE_05, SERVICE_06, SERVICE_07, SERVICE_08 FROM STORE S " +
-                           "WHERE ID IN (SELECT DISTINCT(STORE_ID) FROM PICKUP_ORDER)";
+                           "WHERE ID IN (SELECT DISTINCT(STORE_ID) FROM PICKUP_ORDER where CUSTOMER_ID = ?)";
         
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -266,6 +269,7 @@ public class StoreRepository {
         try {
             conn = DBConnectionFactory.getConnection();
             stmt = conn.prepareStatement(sql);
+            stmt.setString(1, customerId);
             
             rs = stmt.executeQuery();
             while(rs.next()) {

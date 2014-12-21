@@ -13,6 +13,8 @@ import java.util.Set;
 
 import mafdemo.retail.bgf.application.DBConnectionFactory;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
@@ -58,7 +60,7 @@ public class ProductRepository {
                 } catch(Exception e) {}
             }
         }
-        
+
         TraceLog.info(getClass(), "getProductCategories", "Completed successfully");
         return (ProductCategory[]) list.toArray(new ProductCategory[list.size()]);
     }
@@ -74,7 +76,7 @@ public class ProductRepository {
         if(handleProductName) {
             sql += " AND P.NAME LIKE ?";
         }
-        
+
         TraceLog.info(getClass(), "findProducts", "sql: " + sql) ;
         
         Connection conn = null;    
@@ -170,7 +172,7 @@ public class ProductRepository {
                 } catch(Exception e) {}
             }
         }
-        
+
         TraceLog.info(getClass(), "findProductsByIdSet", "END");
         
         return (Product[]) list.toArray(new Product[list.size()]);
@@ -219,18 +221,18 @@ public class ProductRepository {
                 } catch(Exception e) {}
             }
         }
-        
+
         TraceLog.info(getClass(), "findProducts", "Can'f find Product!!!");
         
         return null;        
     }
 
-    public Product[] findFavoriteProducts() {
-        TraceLog.info(getClass(), "findFavoriteProducts", "START");
+    public Product[] findFavoriteProducts(String customerId) {
+        TraceLog.info(getClass(), "findFavoriteProducts", "START - customerId: " + customerId);
         
-        String sql = "SELECT P.ID, P.NAME, P.IMAGE, P.PRICE, P.CATEGORY_ID FROM PRODUCT P WHERE ID IN (SELECT DISTINCT(PRODUCT_ID) FROM PICKUP_ORDER_ITEM)";
+        String sql = "SELECT P.ID, P.NAME, P.IMAGE, P.PRICE, P.CATEGORY_ID FROM PRODUCT P WHERE ID IN (SELECT DISTINCT(I.PRODUCT_ID) FROM PICKUP_ORDER_ITEM I, PICKUP_ORDER O WHERE O.ID = I.ORDER_ID AND O.CUSTOMER_ID = ?)";
 
-        
+
         TraceLog.info(getClass(), "findFavoriteProducts", "sql: " + sql) ;
         
         Connection conn = null;    
@@ -241,6 +243,7 @@ public class ProductRepository {
         try {
             conn = DBConnectionFactory.getConnection();
             stmt = conn.prepareStatement(sql);
+            stmt.setString(1, customerId);
 
             rs = stmt.executeQuery();
             

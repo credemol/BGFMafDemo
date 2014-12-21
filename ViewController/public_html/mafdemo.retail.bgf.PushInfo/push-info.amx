@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelFormLayout id="pfl1">
+      <amx:inputText label="os type" id="it1" value="#{deviceScope.device.os}"/>
+      <amx:inputText label="Token" id="it2" value="#{applicationScope.deviceToken}" rows="4"/>
+      <amx:inputText label="Notified" id="it3" value="#{applicationScope.notified}"/>
+      <amx:inputText label="Order ID" id="it4" value="#{applicationScope.orderId}"/>
+      <amx:inputText label="Payload" id="it5" rows="4" value="#{applicationScope.payload}"/>
+    </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>

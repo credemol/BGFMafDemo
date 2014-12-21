@@ -1,5 +1,7 @@
 package mafdemo.retail.bgf.mobile;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
@@ -54,8 +56,8 @@ public class StoreLocationBean {
         String storeId = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.locationStoreId}");
         
         Store store = storeRepository.findStore(storeId);
-        
-        
+
+
         TraceLog.info(getClass(), "selectStore", "store: " + store);
         if(store != null) {
             setStore(store);

@@ -2,6 +2,8 @@ package mafdemo.retail.bgf.mobile;
 
 import javax.el.ValueExpression;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.bindings.dbf.AmxAccessorIteratorBinding;
@@ -84,7 +86,7 @@ public class StoreSearchBean {
         //String provinceCode = StoreList.PROVINCES[Integer.parseInt(newValue.toString())];
         //TraceLog.info(getClass(), "provinceCode", provinceCode);
         //AdfmfJavaUtilities.setELValue("#{bindings.provinceCode.inputValue}", provinceCode);
-        
+
         TraceLog.info(getClass(), "selectProvince", "Completed successfully");
     }
     
@@ -99,7 +101,7 @@ public class StoreSearchBean {
         String districtsInputValue = (String) AdfmfJavaUtilities.getELValue("#{bindings.districts.inputValue}");
         TraceLog.info(getClass(), "selectDistrict", "districtsInputValue: " + districtsInputValue);
         AdfmfJavaUtilities.setELValue("#{bindings.districtCode.inputValue}", districtsInputValue);
-        
+
         TraceLog.info(getClass(), "selectDistrict", "END");
     }
 

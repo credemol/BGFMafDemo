@@ -189,11 +189,31 @@
       <value n="j2eeWebContextRoot" v="BGFMafDemo-ApplicationController-context-root"/>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
+      <list n="exportedReferences">
+         <hash>
+            <value n="id" v="JAX-RS Jersey 2.x Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JAX-RS Jersey 2.x Jackson"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
       <hash n="jdkReference">
          <value n="id" v="CVM_JDK"/>
          <value n="isJDK" v="true"/>
          <value n="jdkVersion" v="1.4"/>
       </hash>
+      <list n="libraryReferences">
+         <hash>
+            <value n="id" v="JAX-RS Jersey 2.x Client"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="JAX-RS Jersey 2.x Jackson"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+      </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
       <url n="outputDirectory" path="classes/"/>

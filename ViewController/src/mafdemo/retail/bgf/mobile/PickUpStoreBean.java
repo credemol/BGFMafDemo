@@ -5,6 +5,8 @@ import java.util.Map;
 import javax.el.MethodExpression;
 
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.framework.model.AdfELContext;
 
@@ -26,9 +28,8 @@ public class PickUpStoreBean {
         
         //me.invoke(context, new Object[] { provinceCode });
         me.invoke(context, new Object[] { });
-        
-        
-        
+
+
         TraceLog.info(getClass(), "selectProvince", "END");
     }
 
@@ -65,8 +66,8 @@ public class PickUpStoreBean {
         // Add event code here...
         TraceLog.info(getClass(), "storeNameChanged", "START");
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "storeNameChanged", "END");
     }    
 
@@ -81,8 +82,8 @@ public class PickUpStoreBean {
     
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.service01}", boolValue.booleanValue() ? Boolean.FALSE : Boolean.TRUE);
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "toggleService01", "END");
     }
     public void toggleService02(ActionEvent actionEvent) {
@@ -96,8 +97,8 @@ public class PickUpStoreBean {
     
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.service02}", boolValue.booleanValue() ? Boolean.FALSE : Boolean.TRUE);
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "toggleService02", "END");
     }
     public void toggleService03(ActionEvent actionEvent) {
@@ -111,8 +112,8 @@ public class PickUpStoreBean {
     
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.service03}", boolValue.booleanValue() ? Boolean.FALSE : Boolean.TRUE);
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "toggleService03", "END");
     }
     public void toggleService04(ActionEvent actionEvent) {
@@ -126,8 +127,8 @@ public class PickUpStoreBean {
     
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.service04}", boolValue.booleanValue() ? Boolean.FALSE : Boolean.TRUE);
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "toggleService04", "END");
     }
     public void toggleService05(ActionEvent actionEvent) {
@@ -141,8 +142,8 @@ public class PickUpStoreBean {
     
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.service05}", boolValue.booleanValue() ? Boolean.FALSE : Boolean.TRUE);
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "toggleService05", "END");
     }
     public void toggleService06(ActionEvent actionEvent) {
@@ -156,8 +157,8 @@ public class PickUpStoreBean {
     
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.service06}", boolValue.booleanValue() ? Boolean.FALSE : Boolean.TRUE);
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "toggleService06", "END");
     }
     public void toggleService07(ActionEvent actionEvent) {
@@ -171,8 +172,8 @@ public class PickUpStoreBean {
     
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.service07}", boolValue.booleanValue() ? Boolean.FALSE : Boolean.TRUE);
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "toggleService07", "END");
     }
     public void toggleService08(ActionEvent actionEvent) {
@@ -186,8 +187,8 @@ public class PickUpStoreBean {
     
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.service08}", boolValue.booleanValue() ? Boolean.FALSE : Boolean.TRUE);
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "toggleService08", "END");
     }
 
@@ -197,14 +198,14 @@ public class PickUpStoreBean {
         TraceLog.info(getClass(), "selectStore", "START");
         
         Object row = AdfmfJavaUtilities.getELValue("#{bindings.storesIterator.currentRow}");
-        
+
         TraceLog.info(getClass(), "selectStore", "row: " + row);        
         
         if(row != null) {
             //try {
             TraceLog.info(getClass(), "selectStore", "row class: " + row.getClass().getName());
             oracle.adfmf.dc.bean.ConcreteJavaBeanObject beanObject = (oracle.adfmf.dc.bean.ConcreteJavaBeanObject) row;
-            
+
             TraceLog.info(getClass(), "selectStore", "store name: " + beanObject.getAttribute("name"));
             
             Store store = PickUpUtils.toStore(beanObject);
@@ -236,9 +237,8 @@ public class PickUpStoreBean {
         
         //me.invoke(context, new Object[] { provinceCode });
         me.invoke(context, new Object[] { });
-        
-        
-        
+
+
         TraceLog.info(getClass(), "selectProvince", "END");
     }
     
@@ -288,8 +288,8 @@ public class PickUpStoreBean {
         // Add event code here...
         TraceLog.info(getClass(), "storeNameChanged", "START");
         
-        executeFindStores();    
-        
+        executeFindStores();
+
         TraceLog.info(getClass(), "storeNameChanged", "END");
     }    
     public void selectStore____NOT_USED(ActionEvent actionEvent) {
@@ -297,14 +297,14 @@ public class PickUpStoreBean {
         TraceLog.info(getClass(), "selectStore", "START");
         
         Object row = AdfmfJavaUtilities.getELValue("#{bindings.findStoresIterator.currentRow}");
-        
+
         TraceLog.info(getClass(), "increasePurchaseCount", "row: " + row);        
         
         if(row != null) {
             //try {
             TraceLog.info(getClass(), "increasePurchaseCount", "row class: " + row.getClass().getName());
             oracle.adfmf.dc.bean.ConcreteJavaBeanObject beanObject = (oracle.adfmf.dc.bean.ConcreteJavaBeanObject) row;
-            
+
             TraceLog.info(getClass(), "selectStore", "store name: " + beanObject.getAttribute("name"));
             
             Store store = PickUpUtils.toStore(beanObject);

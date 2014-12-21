@@ -15,6 +15,7 @@ public class PickUpOrder {
     private String storeName;
     private String storeNewAddress;
     private String storeOldAddress;
+    private String customerName;
     
     public PickUpOrder() {
         super();
@@ -139,7 +140,15 @@ public class PickUpOrder {
         return storeOldAddress;
     }
 
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
     public String toString() {
-        return "id: " + id + ", storeName: " + storeName + ", orderDate: " + orderDate + ", pickupDate: " + pickupDate;
+        return "id: " + id + ", storeName: " + storeName + ", orderDate: " + orderDate + ", pickupDate: " + pickupDate + ", totalPrice: " + totalPrice;
     }
 }

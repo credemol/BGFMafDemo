@@ -1,5 +1,7 @@
 package mafdemo.retail.bgf.mobile;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.dc.bean.ConcreteJavaBeanObject;
 
 public class PickUpUtils {
@@ -17,7 +19,7 @@ public class PickUpUtils {
         product.setPrice(((Integer)beanObject.getAttribute("price")).intValue());
         product.setImage((String)beanObject.getAttribute("image"));
         product.setQuantity(((Integer)beanObject.getAttribute("quantity")).intValue());
-        
+
         TraceLog.info(PickUpUtils.class, "toProduct", "END");
         return product;
     }    

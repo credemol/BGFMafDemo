@@ -1,4 +1,4 @@
-package mafdemo.retail.bgf.mobile;
+package mafdemo.retail.bgf.application;
 
 import com.sun.util.logging.Level;
 

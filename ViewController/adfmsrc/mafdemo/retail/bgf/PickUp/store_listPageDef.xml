@@ -70,5 +70,11 @@
             Action="setCurrentRowWithKey">
       <NamedData NDName="rowKey" NDValue="#{pageFlowScope.selectedStoreId}" NDType="java.lang.String"/>
     </action>
+    <methodAction id="refreshPickUpHistory" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="refreshPickUpHistory" IsViewObjectMethod="false" DataControl="PickUpHistoryDC"
+                  InstanceName="data.PickUpHistoryDC.dataProvider"/>
+    <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider"/>
   </bindings>
 </pageDefinition>

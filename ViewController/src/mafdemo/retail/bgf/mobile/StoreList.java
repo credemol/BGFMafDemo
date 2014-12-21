@@ -17,6 +17,8 @@ import mafdemo.retail.bgf.application.DBConnectionFactory;
 
 import mafdemo.retail.bgf.application.LifeCycleListenerImpl;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.bindings.dbf.AmxAccessorIteratorBinding;
 import oracle.adfmf.bindings.iterator.BasicIterator;
@@ -138,7 +140,7 @@ public class StoreList {
                            "WHERE PD.PROVINCE_CODE = ? AND PD.DISTRICT_CODE = ? AND PD.ID = S.PROVINCE_DISTRICT_ID ";
         
         sql += buildWhereClause(storeName, service01, service02, service03, service04, service05, service06, service07, service08);
-        
+
         TraceLog.info(getClass(), "getStores", "sql: " + sql);
         
         //TraceLog.info(getClass(), "getStores", "provinceIndex: " + provinceIndex);

@@ -9,4 +9,72 @@
       </XmlRefAddr>
     </RefAddresses>
   </Reference>
+  <Reference name="bgf_demo_server" className="oracle.adf.model.connection.url.HttpURLConnection" xmlns="">
+    <Factory className="oracle.adf.model.connection.url.URLConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="bgf_demo_server">
+        <Contents>
+          <urlconnection name="bgf_demo_server" url="http://192.168.1.11:7101/"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="bgf_secure" className="oracle.adf.model.connection.adfmf.LoginConnection"
+             adfCredentialStoreKey="bgf_secure" partial="false" manageInOracleEnterpriseManager="true" deployable="true"
+             xmlns="">
+    <Factory className="oracle.adf.model.connection.adfmf.LoginConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="adfmfLogin">
+        <Contents>
+          <login url="https://192.168.1.11:7102/bgf_secure/secure/index.html"/>
+          <logout url="https://192.168.1.11:7102/bgf_secure/adfAuthentication?logout=true"/>
+          <authenticationMode value="hybrid"/>
+          <idleTimeout value="300"/>
+          <sessionTimeout value="28800"/>
+          <maxFailuresBeforeCredentialCleared value="3"/>
+          <injectCookiesToRestHttpHeader value="true"/>
+          <includeBasicAuthHeader value="true"/>
+          <rememberCredentials>
+            <enableRememberUserName value="true"/>
+            <rememberUserNameDefault value="true"/>
+            <enableRememberPassword value="false"/>
+            <enableStayLoggedIn value="false"/>
+          </rememberCredentials>
+          <accessControl url="http://192.168.1.11:7101/bgf_secure/resources/acs/getACS"/>
+          <userObjectFilter>
+            <role name="bgf_customer"/>
+            <role name="bgf_store_owner"/>
+          </userObjectFilter>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="oam_ms" className="oracle.adf.model.connection.adfmf.LoginConnection" adfCredentialStoreKey="oam_ms"
+             partial="false" manageInOracleEnterpriseManager="true" deployable="true" xmlns="">
+    <Factory className="oracle.adf.model.connection.adfmf.LoginConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="adfmfLogin">
+        <Contents>
+          <oammsUrl url="http://idmkr6.kr.oracle.com:14100"/>
+          <oammsServiceDomain value="MobileServiceDomain"/>
+          <appId value="MAFTest"/>
+          <locationUpdateEnabled value="true"/>
+          <authenticationMode value="hybrid"/>
+          <idleTimeout value="300"/>
+          <sessionTimeout value="28800"/>
+          <maxFailuresBeforeCredentialCleared value="3"/>
+          <injectCookiesToRestHttpHeader value="true"/>
+          <includeBasicAuthHeader value="true"/>
+          <rememberCredentials>
+            <enableRememberUserName value="true"/>
+            <rememberUserNameDefault value="true"/>
+            <enableRememberPassword value="false"/>
+            <enableStayLoggedIn value="false"/>
+          </rememberCredentials>
+          <accessControl/>
+          <userObjectFilter/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
 </References>

@@ -28,7 +28,14 @@
         <amx:outputText value="#{bindings.storeId.inputValue}" id="ot9"/>
       </amx:panelLabelAndMessage>      
       <amx:panelLabelAndMessage id="plam2" label="#{viewcontrollerBundle.pickup_history_orderStatus}">
+        <amx:commandButton id="cb3" text="#{viewcontrollerBundle.pickup_common_refresh}"
+                           actionListener="#{pageFlowScope.PickUpHistoryDetailBean.refreshOrderStatus}"/>
+              <amx:image id="i1"
+                         source="#{bindings.status.inputValue == '10' ? '/images/pickup_done.jpeg' : '/images/pickup_accepted.jpeg'}"
+                         inlineStyle="width:30px; height:30px;"/>  
+<!--                         
         <amx:outputText value="#{bindings.status.inputValue}" id="ot3"/>
+        -->
       </amx:panelLabelAndMessage>
       <amx:panelLabelAndMessage id="plam5" label="#{viewcontrollerBundle.pickup_historyDetail_customerId}">
         <amx:outputText value="#{bindings.customerId.inputValue}" id="ot6"/>
@@ -73,7 +80,7 @@
         <amx:tableLayout id="tl2" width="100%">
           <amx:rowLayout id="rl2">
             <amx:cellFormat id="cf3" width="44" inlineStyle="padding-left:2px;">
-              <amx:image id="i1" source="#{row.image}" inlineStyle="width:40px; height:40px;"/>
+              <amx:image id="i2" source="#{row.image}" inlineStyle="width:40px; height:40px;"/>
             </amx:cellFormat>
             <amx:cellFormat id="cf5" width="100%">
               <amx:outputText value="#{row.name}" id="ot10" inlineStyle="font-size:small;"/>

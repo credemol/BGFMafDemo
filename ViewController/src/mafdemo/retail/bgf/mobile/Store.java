@@ -1,5 +1,7 @@
 package mafdemo.retail.bgf.mobile;
 
+import mafdemo.retail.bgf.application.TraceLog;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 

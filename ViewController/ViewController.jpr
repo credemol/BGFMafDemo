@@ -249,8 +249,8 @@
          </hash>
       </hash>
       <list n="profileList">
-         <string v="ViewController_MobileFeatureArchive1"/>
          <string v="BGFMafDemo_ViewController"/>
+         <string v="ViewController_MobileFeatureArchive1"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">

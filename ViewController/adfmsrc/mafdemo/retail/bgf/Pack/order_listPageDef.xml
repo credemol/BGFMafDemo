@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="order_listPageDef"
+                Package="mafdemo.retail.bgf.Pack">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="PickUpOrderDC" id="PickUpOrderDCIterator"/>
+    <accessorIterator MasterBinding="PickUpOrderDCIterator" Binds="pickUpOrders" RangeSize="25"
+                      DataControl="PickUpOrderDC" BeanClass="mafdemo.retail.bgf.mobile.PickUpOrder"
+                      id="pickUpOrdersIterator"/>
+    <accessorIterator MasterBinding="pickUpOrdersIterator" Binds="products" RangeSize="25" DataControl="PickUpOrderDC"
+                      BeanClass="mafdemo.retail.bgf.mobile.Product" id="productsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="pickUpOrdersIterator" id="pickUpOrders">
+      <nodeDefinition DefName="mafdemo.retail.bgf.mobile.PickUpOrder" Name="pickUpOrders0">
+        <AttrNames>
+          <Item Value="customerId"/>
+          <Item Value="customerName"/>
+          <Item Value="id"/>
+          <Item Value="key"/>
+          <Item Value="orderDate"/>
+          <Item Value="pickupDate"/>
+          <Item Value="status"/>
+          <Item Value="storeId"/>
+          <Item Value="storeName"/>
+          <Item Value="storeNewAddress"/>
+          <Item Value="storeOldAddress"/>
+          <Item Value="totalPrice"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="id">
+      <AttrNames>
+        <Item Value="id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="key">
+      <AttrNames>
+        <Item Value="key"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="status">
+      <AttrNames>
+        <Item Value="status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="customerId">
+      <AttrNames>
+        <Item Value="customerId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="customerName">
+      <AttrNames>
+        <Item Value="customerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="storeId">
+      <AttrNames>
+        <Item Value="storeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="pickupDate">
+      <AttrNames>
+        <Item Value="pickupDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="orderDate">
+      <AttrNames>
+        <Item Value="orderDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="totalPrice">
+      <AttrNames>
+        <Item Value="totalPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="storeName">
+      <AttrNames>
+        <Item Value="storeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="storeNewAddress">
+      <AttrNames>
+        <Item Value="storeNewAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickUpOrdersIterator" id="storeOldAddress">
+      <AttrNames>
+        <Item Value="storeOldAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="refreshOrderList" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshOrderList"
+                  IsViewObjectMethod="false" DataControl="PickUpOrderDC"
+                  InstanceName="data.PickUpOrderDC.dataProvider"/>
+    <tree IterBinding="productsIterator" id="products">
+      <nodeDefinition DefName="mafdemo.retail.bgf.mobile.Product" Name="products0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="categoryId"/>
+          <Item Value="id"/>
+          <Item Value="image"/>
+          <Item Value="price"/>
+          <Item Value="quantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

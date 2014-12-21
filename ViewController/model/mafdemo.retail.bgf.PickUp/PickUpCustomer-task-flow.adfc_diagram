@@ -9,9 +9,9 @@
       <property
          name="page">/mafdemo.retail.bgf.PickUp/store-list.amx</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>store-list&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>store-list&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
@@ -258,7 +258,7 @@
       <property
          name="fromOutcome">viewLocation</property>
       <property
-         name="sdm:polyPoints">L50,294.0,391.07422,124.0,250.40234,B50</property>
+         name="sdm:polyPoints">L50,294.0,391.07422,124.0,250.26953,B50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -268,6 +268,64 @@
       <property
          name="fromOutcome">viewLocation</property>
       <property
-         name="sdm:polyPoints">L50,293.0,194.07422,165.0,196.26953,R50</property>
+         name="sdm:polyPoints">L54,292.3877,197.57422,165.0,196.26953,R50</property>
+   </ControlFlowCase>
+   <Router
+      id="Router29">
+      <property
+         name="activityId">notificationDecision</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>notificationDecision&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-27.195312</property>
+      <property
+         name="x">-121.0</property>
+   </Router>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase31"
+      from="Router29"
+      to="View2">
+      <property
+         name="fromOutcome">goStoreList</property>
+      <property
+         name="sdm:polyPoints">R50,-80.0,-27.261719,90.0,-30.328125,L50</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall38">
+      <property
+         name="activityId">updateOrderStatus</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>updateOrderStatus&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">89.203125</property>
+      <property
+         name="x">-38.0</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase40"
+      from="Router29"
+      to="MethodCall38">
+      <property
+         name="fromOutcome">updateOrderStatus</property>
+      <property
+         name="sdm:polyPoints">B50,-121.0,26.738281,-79.0,89.13672,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase41"
+      from="MethodCall38"
+      to="View9">
+      <property
+         name="fromOutcome">viewHistory</property>
+      <property
+         name="sdm:polyPoints">R50,3.0,89.13672,293.0,190.57422,L46</property>
    </ControlFlowCase>
 </SDM>
